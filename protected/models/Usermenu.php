@@ -29,7 +29,7 @@ class Usermenu extends CActiveRecord
 
 	public function tableName()
 	{
-		return '{{usermenu}}';
+		return '{{usermenu_csbans}}';
 	}
 
 	public function rules()

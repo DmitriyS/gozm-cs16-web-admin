@@ -15,8 +15,8 @@
 $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'usermenu-form',
 	'enableAjaxValidation'=>TRUE,
-)); 
-$q = Yii::app()->db->createCommand('SELECT MAX(`pos`) AS `mpos` FROM {{usermenu}}')->queryAll();
+));
+$q = Yii::app()->db->createCommand('SELECT MAX(`pos`) AS `mpos` FROM {{usermenu_csbans}}')->queryAll();
 $q = intval($q[0]['mpos'] + 1);
 if($model->isNewRecord)
 	$model->pos = $q;
@@ -31,7 +31,7 @@ if($model->isNewRecord)
 			array(
 				'class'=>'span5',
 			)
-		); 
+		);
 	?>
 
 	<?php echo $form->dropDownListRow($model,'activ',array('0' => 'Нет', '1' => 'Да'),array('class'=>'span5')); ?>
