@@ -57,18 +57,19 @@ $('.admintr').live('click', function(){
 			)
 		),
 		array(
+			'name' => 'access',
+			'value' => '$data->access',
+			'htmlOptions' => array(
+				'style' => 'width: 160px;'
+			)
+		),
+		/*
+		array(
 			'name' => 'icq',
 			'type' => 'raw',
 			'value' => '$data->icq != 0 ? CHtml::encode($data->icq) : "<i>Не задан</i>"',
 			'htmlOptions' => array(
 				'style' => 'width: 100px;'
-			)
-		),
-		array(
-			'name' => 'access',
-			'value' => '$data->access',
-			'htmlOptions' => array(
-				'style' => 'width: 160px;'
 			)
 		),
 		array(
@@ -78,7 +79,6 @@ $('.admintr').live('click', function(){
 				'style' => 'width: 170px; text-align: center'
 			)
 		),
-
 		array(
 			'name' => 'expired',
 			'type' => 'raw',
@@ -87,6 +87,7 @@ $('.admintr').live('click', function(){
 				'style' => 'width: 170px; text-align: center'
 			)
 		),
+		*/
 	),
 )); ?>
 <?php $this->beginWidget('bootstrap.widgets.TbModal',
@@ -122,7 +123,7 @@ $('.admintr').live('click', function(){
 </div>
 <?php $this->endWidget(); ?>
 
-<div style="width: 200px; margin: 0 auto; text-align: center">
+<!--div style="width: 200px; margin: 0 auto; text-align: center">
 	<?php $this->widget('bootstrap.widgets.TbButton', array(
         'label'=>'Информация доступа',
         'url'=>'#',
@@ -150,4 +151,4 @@ $('.admintr').live('click', function(){
 		e - Пароль не требуется (важен только SteamID либо IP )<br />
 		k - Имя или тег (С УчёТом РеГистРа!).
 	</div>
-</div>
+</div-->
