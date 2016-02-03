@@ -351,13 +351,13 @@ class AmxadminsController extends Controller
 		$this->layout='//layouts/column1';
 
 		// Вытаскиваем админов через датапровайдер
-		$dependecy = new CDbCacheDependency('SELECT MAX(`created`), MAX(`expired`) FROM {{amxadmins}}');
+		$dependecy = new CDbCacheDependency('SELECT MAX(`id`) FROM {{amxadmins}}');
 
 		$admins=new CActiveDataProvider(Amxadmins::model()->cache(300, $dependecy), array(
 			'criteria'=>array(
 				// Выводим только тех, кого разрешено ваыводить
-				'condition' => "`ashow`=1 AND (`expired` = 0 OR `expired` > UNIX_TIMESTAMP())",
-				'order' => '`expired` DESC, `nickname` ASC',
+				'condition' => '`ashow`=1',
+				'order' => '`id` ASC',
 			),
 			'pagination' => array(
 				'pageSize' => Yii::app()->config->bans_per_page,
