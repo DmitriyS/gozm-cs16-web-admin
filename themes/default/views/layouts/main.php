@@ -137,10 +137,9 @@
 					<b><?php echo CHtml::encode(Yii::app()->name)?></b>
 				</div>
 				<div id="totop" class="grid-6">
-					© 2013-<?php echo date('Y') ?>
 					<?php echo CHtml::link(
-							'Craft-Soft Team',
-							'http://craft-soft.ru',
+							'Группа ВКонтакте',
+							'http://vk.com/go_zombie',
 							array(
 								'target' => '_blank'
 							)
