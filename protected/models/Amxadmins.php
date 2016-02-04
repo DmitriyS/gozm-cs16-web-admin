@@ -56,7 +56,7 @@ class Amxadmins extends CActiveRecord
     {
         return array(
             'sort'=>array(
-                'order'=>'`id` ASC'
+                'order'=>'`access` ASC, `id` ASC'
             ),
         );
     }

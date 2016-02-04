@@ -357,7 +357,7 @@ class AmxadminsController extends Controller
 			'criteria'=>array(
 				// Выводим только тех, кого разрешено ваыводить
 				'condition' => '`ashow`=1',
-				'order' => '`id` ASC',
+				'order' => '`access` ASC, `id` ASC',
 			),
 			'pagination' => array(
 				'pageSize' => Yii::app()->config->bans_per_page,
