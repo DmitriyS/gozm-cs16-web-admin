@@ -45,7 +45,7 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 			'enableSorting' => false,
 			'rowHtmlOptionsExpression'=>'array(
 				"style" => "cursor:pointer;",
-				"class" => $data->expired == 1 ? "bantr success" : "bantr",
+				"class" => $data->unbanned == 1 ? "bantr success" : "bantr",
 				"onclick" => "document.location.href=\'".Yii::app()->createUrl("/bans/view", array("id" => $data->bid))."\'"
 			)',
 			'columns'=>array(
@@ -98,35 +98,36 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 		</table>
 	</div-->
 
-	<?php
-	// Информация с серверов собирается аяксом. Функция написана выше
-	?>
 	<div class="span6">
 		<div class="alert alert-info"><h4>Лучшие 10 игроков</h4></div>
-		<table class="table table-bordered table-condensed table-striped">
-			<thead>
-				<tr>
-					<th>Никнейм</th>
-					<th>Скилл</th>
-				</tr>
-			</thead>
-			<tbody id="servers">
-				<?php foreach($servers as $server):?>
-				<tr
-					class="warning"
-					style="cursor: pointer"
-					id="server<?php echo intval($server['id'])?>"
-					onclick="document.location.href='<?php echo $this->createUrl('/site/index', array('id' => $server['id'])) ?>'"
-				>
-					<td colspan="3">
-						<?php echo $server['hostname']?>
-						&nbsp;
-						<?php echo CHtml::image(Yii::app()->baseUrl . '/images/loading.gif'); ?>
-					</td>
-				</tr>
-				<?php endforeach;?>
-			</tbody>
-		</table>
+		<?php
+		$this->widget('bootstrap.widgets.TbGridView', array(
+			'dataProvider'=>$bans,
+			'type'=>'striped bordered condensed',
+			'id' => 'bans-grid',
+			'template' => '{items} {pager}',
+			'enableSorting' => false,
+			'rowHtmlOptionsExpression'=>'array(
+				"style" => "cursor:pointer;",
+				"class" => $data->unbanned == 1 ? "bantr success" : "bantr",
+				"onclick" => "document.location.href=\'".Yii::app()->createUrl("/bans/view", array("id" => $data->bid))."\'"
+			)',
+			'columns'=>array(
+				'player_nick',
+				array(
+					'name' => 'ban_created',
+					'value' => 'date("d.m.Y",$data->ban_created)',
+				),
+				array(
+					'name'=>'ban_length',
+					'value' => 'Prefs::date2word($data->ban_length)',
+					'htmlOptions' => array(
+						'style' => 'width: 130px'
+					)
+				)
+			),
+		));
+		?>
 	</div>
 
 </div>
