@@ -246,10 +246,10 @@ class AmxadminsController extends Controller
 		$info .= "<td>".CHtml::encode($model->nickname)."</td>";
 		$info .= "</tr><tr>";
 		$info .= "<td><b>Контакты</b></td>";
-		$info .= "<td>" . ($model->icq ? CHtml::image("//icq-rus.com/icq/3/".$model->icq.".gif"). " " . $model->icq : 'Не задан') . "</td>";
+		$info .= "<td>" . 'Не задан'/*($model->icq ? Chtml::link("$model->icq") : 'Не задан')*/ . "</td>";
 		$info .= "</tr><tr>";
 		$info .= "<td><b>Доступ</b></td>";
-		$info .= "<td>".$model->access."</td>";
+		$info .= "<td>" . ($model->access == 't' ? 'VIP' : 'ADMIN') . "</td>";
 		$info .= "</tr><tr>";
 		$info .= "<td><b>Добавлен</b></td>";
 		$info .= "<td>".date("d.m.Y - H:i:s", $model->created)."</td>";

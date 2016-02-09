@@ -72,6 +72,7 @@ $('.admintr').live('click', function(){
 				'style' => 'width: 100px;'
 			)
 		),
+		*/
 		array(
 			'name' => 'created',
 			'value' => 'date("d.m.Y - H:i:s",$data->created)',
@@ -87,7 +88,6 @@ $('.admintr').live('click', function(){
 				'style' => 'width: 170px; text-align: center'
 			)
 		),
-		*/
 	),
 )); ?>
 <?php $this->beginWidget('bootstrap.widgets.TbModal',
