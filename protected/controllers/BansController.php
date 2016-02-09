@@ -131,7 +131,7 @@ class BansController extends Controller
 				),
 			),
 		));
-		
+
 		// История банов
 		$history = new CActiveDataProvider('Bans', array(
 			'criteria' => array(
@@ -343,7 +343,7 @@ class BansController extends Controller
 					:
 				Prefs::date2word($model->ban_length) .
 				($model->expired == 1 ? ' (истек)' : '')) . "');";
-			$js .= "$('#bandetail-admin').html('" . $model->adminName . "');";
+			$js .= "$('#bandetail-admin').html('" . CHtml::encode($model->adminName) . "');";
 			$js .= "$('#bandetail-server').html('" . CHtml::encode($model->server_name) . "');";
 			$js .= "$('#bandetail-kicks').html('" . $model->ban_kicks . "');";
 			$js .= "$('#loading').hide();";
