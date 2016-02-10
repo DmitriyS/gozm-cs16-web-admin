@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `%prefix%_amxadmins` (
   `flags` varchar(32) DEFAULT NULL,
   `steamid` varchar(32) DEFAULT NULL,
   `nickname` varchar(32) DEFAULT NULL,
-  `icq` int(9) DEFAULT NULL,
+  `icq` varchar(50) DEFAULT NULL,
   `ashow` int(11) DEFAULT NULL,
   `created` int(11) DEFAULT NULL,
   `expired` int(11) DEFAULT NULL,
