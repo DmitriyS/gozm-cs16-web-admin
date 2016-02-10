@@ -58,7 +58,7 @@ $('.admintr').live('click', function(){
 		),
 		array(
 			'name' => 'access',
-			'value' => '$data->access == "t" ? "VIP" : "ADMIN"',
+			'value' => 'Amxadmins::getRole($data->access)',
 			'htmlOptions' => array(
 				'style' => 'width: 160px;'
 			)

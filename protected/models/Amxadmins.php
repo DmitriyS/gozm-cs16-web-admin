@@ -320,6 +320,18 @@ class Amxadmins extends CActiveRecord
         return intval($long / 86400);
 	}
 
+    public static function getRole($flags)
+    {
+        if ($flags == 't') {
+            return 'VIP';
+        } elseif (strpos($flags, 'z') !== false) {
+            return 'UNKNOWN';
+        }
+        else {
+            return 'ADMIN';
+        }
+    }
+
 	public function afterSave() {
 
 		if(!empty($this->servers) && $this->isNewRecord) {

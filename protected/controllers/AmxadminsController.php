@@ -249,7 +249,8 @@ class AmxadminsController extends Controller
 		$info .= "<td>" . ($model->icq ? CHtml::link($model->icq, $model->icq) : 'Не задан') . "</td>";
 		$info .= "</tr><tr>";
 		$info .= "<td><b>Доступ</b></td>";
-		$info .= "<td>" . ($model->access == 't' ? 'VIP' : 'ADMIN') . "</td>";
+		//$info .= "<td>" . ($model->access == 't' ? 'VIP' : 'ADMIN') . "</td>";
+		$info .= "<td>" . (Amxadmins::getRole($model->access)) . "</td>";
 		$info .= "</tr><tr>";
 		$info .= "<td><b>Добавлен</b></td>";
 		$info .= "<td>".date("d.m.Y - H:i:s", $model->created)."</td>";
