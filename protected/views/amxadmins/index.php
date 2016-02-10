@@ -63,16 +63,14 @@ $('.admintr').live('click', function(){
 				'style' => 'width: 160px;'
 			)
 		),
-		/*
 		array(
 			'name' => 'icq',
 			'type' => 'raw',
-			'value' => '$data->icq != 0 ? CHtml::encode($data->icq) : "<i>Не задан</i>"',
+			'value' => '$data->icq != '' ? CHtml::encode($data->icq) : "<i>Не задан</i>"',
 			'htmlOptions' => array(
 				'style' => 'width: 100px;'
 			)
 		),
-		*/
 		array(
 			'name' => 'created',
 			'value' => 'date("d.m.Y - H:i:s",$data->created)',

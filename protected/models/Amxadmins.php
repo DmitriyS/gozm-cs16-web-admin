@@ -95,7 +95,7 @@ class Amxadmins extends CActiveRecord
 			'flags' => 'Тип админки',
 			'steamid' => 'Steamid/IP/Ник',
 			'nickname' => 'Ник',
-			'icq' => 'ICQ',
+			'icq' => 'Контакты',
 			'ashow' => 'Показывать в списке админов',
 			'created' => 'Дата добавления',
 			'expired' => 'Истекает',
