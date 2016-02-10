@@ -90,7 +90,7 @@ class Amxadmins extends CActiveRecord
 			'id' => 'ID',
 			'username' => 'SteamID',
 			'password' => 'Пароль',
-			'access' => 'Флаги доступа',
+			'access' => 'Доступ',
 			'accessflags' => 'Флаги доступа',
 			'flags' => 'Тип админки',
 			'steamid' => 'Steamid/IP/Ник',
