@@ -25,12 +25,9 @@ $banner = Yii::app()->config->banner ? ' url('.Yii::app()->urlManager->baseUrl.'
 $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
     'heading'=>CHtml::encode(Yii::app()->name),
 	'htmlOptions'=>array(
-		//'style' => 'background: #c1c1c1'.$banner.';color:#fff;text-shadow: 2px 2px 3px #1b1b1b;'
+		'style' => 'background: #c1c1c1'.$banner.';color:#fff;text-shadow: 2px 2px 3px #1b1b1b;'
 	)
 )); ?>
-
-<p><?php echo CHtml::encode(Yii::app()->name); ?> установлен.</p>
-
 <?php $this->endWidget(); ?>
 
 <div class="row-fluid">
@@ -81,8 +78,8 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 			</thead>
 			<tbody id="servers">
 				<?php foreach($servers as $server):?>
-				<tr 
-					class="warning" 
+				<tr
+					class="warning"
 					style="cursor: pointer"
 					id="server<?php echo intval($server['id'])?>"
 					onclick="document.location.href='<?php echo $this->createUrl('/serverinfo/view', array('id' => $server['id'])) ?>'"

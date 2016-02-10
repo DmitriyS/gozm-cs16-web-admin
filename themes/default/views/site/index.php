@@ -25,12 +25,9 @@ $banner = Yii::app()->config->banner ? ' url('.Yii::app()->urlManager->baseUrl.'
 $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
     'heading'=>CHtml::encode(Yii::app()->name),
 	'htmlOptions'=>array(
-		//'style' => 'background: #c1c1c1'.$banner.';color:#fff;text-shadow: 2px 2px 3px #1b1b1b;'
+		'style' => 'background: #c1c1c1'.$banner.';color:#fff;text-shadow: 2px 2px 3px #1b1b1b;'
 	)
 )); ?>
-
-<p><?php echo CHtml::encode(Yii::app()->name); ?> установлен.</p>
-
 <?php $this->endWidget(); ?>
 
 <div class="row-fluid">
