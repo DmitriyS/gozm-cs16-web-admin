@@ -137,7 +137,7 @@ if($model->ban_length == '-1') {
 		),
 		'expiredTime',
 		'server_name',
-		'ban_kicks',
+		//'ban_kicks',
 	),
 )); ?>
 
@@ -177,7 +177,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 			'value' => 'date("d.m.Y - H:i:s", $data->ban_created)',
 		),
 		'ban_reason',
-		
+
 		array(
 			'name' => 'ban_length',
 			'type' => 'raw',
