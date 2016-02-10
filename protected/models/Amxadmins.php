@@ -69,7 +69,7 @@ class Amxadmins extends CActiveRecord
 			array('icq, ashow, days, change', 'numerical', 'integerOnly'=>true),
 			array('username, access, flags, steamid, nickname', 'length', 'max'=>32),
 			array('password', 'length', 'max'=>50),
-			array('id, username, password, access, flags, steamid, nickname, icq, ashow, created, expired, days', 'safe',  'on'=>'search'),
+			array('id, username, password, access, flags, steamid, nickname, icq, ashow, created, last_seen, expired, days', 'safe',  'on'=>'search'),
 		);
 	}
 
@@ -98,6 +98,7 @@ class Amxadmins extends CActiveRecord
 			'icq' => 'Контакты',
 			'ashow' => 'Показывать в списке админов',
 			'created' => 'Дата добавления',
+            'last_seen' => 'Последний визит',
 			'expired' => 'Истекает',
 			'days' => 'Дней',
 			'long' => 'Осталось дней',
@@ -121,6 +122,7 @@ class Amxadmins extends CActiveRecord
 		$criteria->compare('icq',$this->icq);
 		$criteria->compare('ashow',$this->ashow);
 		$criteria->compare('created',$this->created);
+        $criteria->compare('last_seen',$this->last_seen);
 		$criteria->compare('expired',$this->expired);
 		$criteria->compare('days',$this->days);
 		//$criteria->order = 'nickname ASC';

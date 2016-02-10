@@ -53,7 +53,7 @@ $('.admintr').live('click', function(){
 			'name' => 'nickname',
 			'value' => '$data->nickname',
 			'htmlOptions' => array(
-				'style' => 'width: 340px;'
+				'style' => 'width: 170px;'
 			)
 		),
 		array(
@@ -78,10 +78,19 @@ $('.admintr').live('click', function(){
 				'style' => 'width: 170px; text-align: center'
 			)
 		),
+		/*
 		array(
 			'name' => 'expired',
 			'type' => 'raw',
 			'value' => '$data->expired == 0 ? "<i>Никогда</i>" : date("d.m.Y - H:i:s",$data->expired)',
+			'htmlOptions' => array(
+				'style' => 'width: 170px; text-align: center'
+			)
+		),
+		*/
+		array(
+			'name' => 'last_seen',
+			'value' => 'date("d.m.Y - H:i:s",$data->last_seen)',
 			'htmlOptions' => array(
 				'style' => 'width: 170px; text-align: center'
 			)

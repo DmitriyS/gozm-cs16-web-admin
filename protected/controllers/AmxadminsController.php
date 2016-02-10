@@ -249,14 +249,13 @@ class AmxadminsController extends Controller
 		$info .= "<td>" . ($model->icq ? CHtml::link($model->icq, $model->icq) : 'Не задан') . "</td>";
 		$info .= "</tr><tr>";
 		$info .= "<td><b>Доступ</b></td>";
-		//$info .= "<td>" . ($model->access == 't' ? 'VIP' : 'ADMIN') . "</td>";
 		$info .= "<td>" . (Amxadmins::getRole($model->access)) . "</td>";
 		$info .= "</tr><tr>";
 		$info .= "<td><b>Добавлен</b></td>";
-		$info .= "<td>".date("d.m.Y - H:i:s", $model->created)."</td>";
+		$info .= "<td>" . date("d.m.Y - H:i:s", $model->created) . "</td>";
 		$info .= "</tr><tr>";
-		$info .= "<td><b>Истекает</b></td>";
-		$info .= "<td>" . ($model->expired != 0 ? date("d.m.Y - H:i:s", $model->expired) : "Никогда") . "</td>";
+		$info .= "<td><b>Последний визит</b></td>";
+		$info .= "<td>" . ($model->last_seen ? date("d.m.Y - H:i:s", $model->last_seen) : "Никогда") . "</td>";
 		$info .= "</tr>";
 		$info .= "</table>";
 		$js  = "$('#adminInfo').html('".$info."');";

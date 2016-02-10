@@ -173,13 +173,13 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 		<td id="bandetail-steam">
 		</td>
 	</tr>
-	<tr class="odd">
+	<!--tr class="odd">
 		<td>
 			<b>Steam Community</b>
 		</td>
 		<td id="bandetail-steamcommynity">
 		</td>
-	</tr>
+	</tr-->
 	<tr class="odd">
 		<td>
 			<b>IP адрес</b>
@@ -236,13 +236,13 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 		<td id="bandetail-server">
 		</td>
 	</tr>
-	<tr class="odd">
+	<!--tr class="odd">
 		<td>
 			<b>Кол-во киков</b>
 		</td>
 		<td id="bandetail-kicks">
 		</td>
-	</tr>
+	</tr-->
 	<tr>
 		<td colspan="2" style="text-align: center">
 			<?php $this->widget('bootstrap.widgets.TbButton', array(

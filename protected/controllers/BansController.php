@@ -332,7 +332,7 @@ class BansController extends Controller
 			}
 			$js = "$('#bandetail-nick').html('" .  CHtml::encode($model->player_nick) . "');";
 			$js .= "$('#bandetail-steam').html('" . $model->player_id . "');";
-			$js .= "$('#bandetail-steamcommynity').html('" . Prefs::steam_convert($model->player_id, true) . "');";
+			//$js .= "$('#bandetail-steamcommynity').html('" . Prefs::steam_convert($model->player_id, true) . "');";
 			$js .= "$('#bandetail-ip').html('" . (Webadmins::checkAccess('ip_view') ? $model->player_ip : 'Cкрыт') . "');";
 			$js .= "$('#bandetail-type').html('" . Prefs::getBanType($model->ban_type) . "');";
 			$js .= "$('#bandetail-reason').html('" . CHtml::encode($model->ban_reason) . "');";
@@ -346,7 +346,7 @@ class BansController extends Controller
 				($model->expired == 1 ? ' (истек)' : '')) . "');";
 			$js .= "$('#bandetail-admin').html('" . CHtml::encode($model->adminName) . "');";
 			$js .= "$('#bandetail-server').html('" . CHtml::encode($model->server_name) . "');";
-			$js .= "$('#bandetail-kicks').html('" . $model->ban_kicks . "');";
+			//$js .= "$('#bandetail-kicks').html('" . $model->ban_kicks . "');";
 			$js .= "$('#loading').hide();";
 			$js .= "$('#viewban').attr({'href': '".Yii::app()->urlManager->createUrl('/bans/view', array('id' => $_POST['bid']))."'});";
 			$js .= "$('#BanDetail').modal('show');";

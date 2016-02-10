@@ -53,7 +53,7 @@ $('.admintr').live('click', function(){
 			'name' => 'nickname',
 			'value' => '$data->nickname',
 			'htmlOptions' => array(
-				'style' => 'width: 340px;'
+				'style' => 'width: 170px;'
 			)
 		),
 		array(
@@ -88,6 +88,13 @@ $('.admintr').live('click', function(){
 			)
 		),
         */
+		array(
+			'name' => 'last_seen',
+			'value' => 'date("d.m.Y - H:i:s",$data->last_seen)',
+			'htmlOptions' => array(
+				'style' => 'width: 170px; text-align: center'
+			)
+		),
 	),
 )); ?>
 <?php $this->beginWidget('bootstrap.widgets.TbModal',
