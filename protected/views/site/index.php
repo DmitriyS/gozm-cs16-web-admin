@@ -48,15 +48,15 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 			'columns'=>array(
 				'player_nick',
 				array(
-					'name' => 'ban_created',
-					'value' => 'date("d.m.Y",$data->ban_created)',
+					'name' => 'map_name',
+					'value' => '$data->map_name',
 				),
 				array(
 					'name'=>'ban_length',
 					'value' => 'Prefs::date2word($data->ban_length)',
-					'htmlOptions' => array(
-						'style' => 'width: 130px'
-					)
+					// 'htmlOptions' => array(
+					// 	'style' => 'width: 130px'
+					// )
 				)
 			),
 		));
