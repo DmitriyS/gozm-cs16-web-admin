@@ -19,7 +19,7 @@ class Players extends CActiveRecord
 			array('ip', 'match', 'pattern' => '/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/'),
 			array('steam_id', 'match', 'pattern' => '/^(STEAM|VALVE)_([0-9]):([0-9]):\d{1,21}$/'),
 			array('nick', 'length', 'max'=>100),
-			array('id, nick, ip, steam_id, last_seen, first_zombie, infect, zombiekills, humankills, death, infected, suicide, extra, knife_kills, best_zombie, best_human, best_player, escape_hero', 'safe', 'on'=>'search'),
+			array('id, nick, ip, steam_id, last_seen, first_zombie, infect, zombiekills, humankills, death, infected, suicide, extra, knife_kills, best_zombie, best_human, best_player, escape_hero, rank, skill', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,6 +49,8 @@ class Players extends CActiveRecord
             'best_human'        => 'Лучший человек',
 			'best_player'		=> 'Лучший игрок карты',
 			'escape_hero'		=> 'Герой эскейпа',
+            'rank'              => 'Ранк',
+            'skill'             => 'Скилл',
 		);
 	}
 
@@ -78,6 +80,8 @@ class Players extends CActiveRecord
         $criteria->compare('best_human',$this->best_human);
         $criteria->compare('best_player',$this->best_player);
         $criteria->compare('escape_hero',$this->escape_hero);
+        $criteria->compare('rank',$this->rank);
+        $criteria->compare('skill',$this->skill);
 
 		$criteria->order = '`id` DESC';
 
@@ -88,4 +92,10 @@ class Players extends CActiveRecord
 			)
 		));
 	}
+
+    public static function topPlayersSQL($limit=10)
+    {
+        return "SELECT * FROM (SELECT *, (@_c := @_c + 1) AS `rank`, ((`infect` + `zombiekills`*2 + `humankills` + `knife_kills`*5 + `best_zombie` + `best_human` + `escape_hero`*3 + `best_player`*10) / (`infected` + `death` + 300)) AS `skill` FROM (SELECT @_c := 0) r, `bio_players` ORDER BY `skill` DESC) AS `newtable` WHERE `rank` <= ".$limit." ORDER BY `rank` LIMIT ".$limit.";";
+    }
+
 }

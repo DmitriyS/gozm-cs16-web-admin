@@ -110,8 +110,8 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 			'columns'=>array(
 				'nick',
 				array(
-					'name'=>'extra',
-					'value' => '$data->extra'
+					'name'=>'infect',
+					'value' => '$data->infect'
 				)
 			),
 		));
