@@ -335,7 +335,7 @@ class BansController extends Controller
 			$js .= "$('#bandetail-steamcommynity').html('" . Prefs::steam_convert($model->player_id, true) . "');";
 			$js .= "$('#bandetail-ip').html('" . (Webadmins::checkAccess('ip_view') ? $model->player_ip : 'Cкрыт') . "');";
 			$js .= "$('#bandetail-type').html('" . Prefs::getBanType($model->ban_type) . "');";
-			$js .= "$('#bandetail-reason').html('" . $model->ban_reason . "');";
+			$js .= "$('#bandetail-reason').html('" . CHtml::encode($model->ban_reason) . "');";
 			$js .= "$('#bandetail-datetime').html('" . date('d.m.y - H:i:s',$model->ban_created) . "');";
 			$js .= "$('#bandetail-expired').html('" . ($model->ban_length == '-1'
 					?
