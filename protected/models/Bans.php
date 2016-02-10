@@ -25,6 +25,7 @@
  * @property integer $ban_length Срок бана
  * @property string $server_ip IP сервера
  * @property string $server_name Название сервера
+ * @property string $map_name Название карты, на которой забанили игрока
  * @property integer $ban_kicks Кол-во киков
  * @property integer $expired Дата истечения бана
  * @property integer $imported Импортирован бан или нет
@@ -65,7 +66,7 @@ class Bans extends CActiveRecord
 			array('player_nick, ban_reason, cs_ban_reason', 'length', 'max'=>100),
 			array('ban_type', 'in', 'range' => array('S', 'SI')),
 			//array('expiredTime', 'safe'),
-			array('bid, player_ip, player_id, player_nick, admin_ip, admin_id, admin_nick, ban_type, ban_reason, cs_ban_reason, ban_created, ban_length, server_ip, server_name, ban_kicks, expired, imported, expiredTime', 'safe', 'on'=>'search'),
+			array('bid, player_ip, player_id, player_nick, admin_ip, admin_id, admin_nick, ban_type, ban_reason, cs_ban_reason, ban_created, ban_length, server_ip, server_name, map_name, ban_kicks, expired, imported, expiredTime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -125,6 +126,7 @@ class Bans extends CActiveRecord
 			'ban_length'		=> 'Срок бана',
 			'server_ip'			=> 'IP сервера',
 			'server_name'		=> 'Название сервера',
+            'map_name'          => 'Карта',
 			'ban_kicks'			=> 'Кики',
 			'expired'			=> 'Истек',
 			'imported'			=> 'Импортированный',
@@ -141,16 +143,16 @@ class Bans extends CActiveRecord
         }
         return $return;
     }
-    
+
 	public function getUnbanned() {
 		return $this->ban_length == '-1' || $this->expired == 1 || ($this->ban_length && ($this->ban_created + ($this->ban_length * 60)) < time());
 	}
-	
+
 	protected function afterFind() {
 		$country = strtolower(Yii::app()->IpToCountry->lookup($this->player_ip));
 		$this->country = CHtml::image(
-            Yii::app()->urlManager->baseUrl 
-            . '/images/country/' 
+            Yii::app()->urlManager->baseUrl
+            . '/images/country/'
             . ($country != 'zz' ? $country : 'clear') . '.png'
         );
         return parent::afterFind();
@@ -196,7 +198,7 @@ class Bans extends CActiveRecord
 			{
 				return $this->addError($this->player_ip, 'Этот IP уже забанен');
 			}
-			
+
 			if($this->player_id && Bans::model()->count('`player_id` = :id AND (`ban_length` = 0 OR `ban_created` + (`ban_length` * 60) >= UNIX_TIMESTAMP())', array(
 					':id' => $this->player_id
 				)))
@@ -244,7 +246,7 @@ class Bans extends CActiveRecord
 	{
 		return Prefs::getExpired($this->ban_created, $this->ban_length);
 	}
-    
+
 	/**
 	 * Настройки поиска
 	 * @return \CActiveDataProvider
@@ -273,6 +275,7 @@ class Bans extends CActiveRecord
         $criteria->compare('ban_length',$this->ban_length);
 		$criteria->compare('server_ip',$this->server_ip,true);
 		$criteria->compare('server_name',$this->server_name,true);
+        $criteria->compare('map_name',$this->map_name,true);
 		$criteria->compare('ban_kicks',$this->ban_kicks);
 		$criteria->compare('expired',$this->expired);
 		$criteria->compare('imported',$this->imported);

@@ -337,6 +337,7 @@ class BansController extends Controller
 			$js .= "$('#bandetail-type').html('" . Prefs::getBanType($model->ban_type) . "');";
 			$js .= "$('#bandetail-reason').html('" . CHtml::encode($model->ban_reason) . "');";
 			$js .= "$('#bandetail-datetime').html('" . date('d.m.y - H:i:s',$model->ban_created) . "');";
+            $js .= "$('#bandetail-map').html('" . $model->map_name . "');";
 			$js .= "$('#bandetail-expired').html('" . ($model->ban_length == '-1'
 					?
 				'Разбанен'

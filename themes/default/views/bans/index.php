@@ -97,7 +97,10 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 				'style' => 'width: 180px'
 			)
 		),
-
+		array(
+			'header' => 'Карта',
+			'value' => '$data->map_name',
+		),
 		array(
 			'header' => 'Админ',
 			'value' => '$data->admin_nick',
@@ -203,6 +206,13 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 			<b>Дата/Время</b>
 		</td>
 		<td id="bandetail-datetime">
+		</td>
+	</tr>
+	<tr class="odd">
+		<td>
+			<b>Карта</b>
+		</td>
+		<td id="bandetail-map">
 		</td>
 	</tr>
 	<tr class="odd">
