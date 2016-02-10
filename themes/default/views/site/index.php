@@ -99,28 +99,19 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 		<div class="alert alert-info"><h4>Лучшие 10 игроков</h4></div>
 		<?php
 		$this->widget('bootstrap.widgets.TbGridView', array(
-			'dataProvider'=>$bans,
+			'dataProvider'=>$players,
 			'type'=>'striped bordered condensed',
 			'id' => 'bans-grid',
 			'template' => '{items} {pager}',
 			'enableSorting' => false,
 			'rowHtmlOptionsExpression'=>'array(
-				"style" => "cursor:pointer;",
-				"class" => $data->unbanned == 1 ? "bantr success" : "bantr",
-				"onclick" => "document.location.href=\'".Yii::app()->createUrl("/bans/view", array("id" => $data->bid))."\'"
+				"style" => "cursor:pointer;"
 			)',
 			'columns'=>array(
-				'player_nick',
+				'nick',
 				array(
-					'name' => 'ban_created',
-					'value' => 'date("d.m.Y",$data->ban_created)',
-				),
-				array(
-					'name'=>'ban_length',
-					'value' => 'Prefs::date2word($data->ban_length)',
-					'htmlOptions' => array(
-						'style' => 'width: 130px'
-					)
+					'name'=>'extra',
+					'value' => '$data->extra'
 				)
 			),
 		));

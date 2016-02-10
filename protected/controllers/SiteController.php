@@ -34,7 +34,6 @@ class SiteController extends Controller
 	{
 		// Вытаскиваем 10 последних банов
 		$dependecy = new CDbCacheDependency('SELECT MAX(`bid`) FROM {{bans}}');
-
 		$bans = new CActiveDataProvider(Bans::model()->cache(300, $dependecy), array(
 			'criteria' => array(
 				'condition' => Yii::app()->config->auto_prune ? 'expired = 0' : null,
@@ -44,8 +43,19 @@ class SiteController extends Controller
 			'pagination' => false,
 		));
 
+		// Вытаскиваем 10 лучших игроков
+		$dependecy = new CDbCacheDependency('SELECT MAX(`id`) FROM `bio_players`');
+		$players = new CActiveDataProvider(Players::model()->cache(300, $dependecy), array(
+			'criteria' => array(
+				'order' => 'id DESC',
+				'limit' => 10,
+			),
+			'pagination' => false,
+		));
+
 		$this->render('index',array(
 			'bans' => $bans,
+			'players' => $players,
 			'servers' => Serverinfo::model()->findAll(),
 		));
 	}

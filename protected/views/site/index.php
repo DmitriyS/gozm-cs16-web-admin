@@ -63,7 +63,7 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 		?>
 	</div>
 
-	<?php
+	<!--?php
 	// Информация с серверов собирается аяксом. Функция написана выше
 	?>
 	<div class="span6">
@@ -93,10 +93,34 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 				<?php endforeach;?>
 			</tbody>
 		</table>
+	</div-->
 
+	<div class="span6">
+		<div class="alert alert-info"><h4>Лучшие 10 игроков</h4></div>
+		<?php
+		$this->widget('bootstrap.widgets.TbGridView', array(
+			'dataProvider'=>$players,
+			'type'=>'striped bordered condensed',
+			'id' => 'bans-grid',
+			'template' => '{items} {pager}',
+			'enableSorting' => false,
+			'rowHtmlOptionsExpression'=>'array(
+				"style" => "cursor:pointer;"
+			)',
+			'columns'=>array(
+				'nick',
+				array(
+					'name'=>'extra',
+					'value' => '$data->extra'
+				)
+			),
+		));
+		?>
 	</div>
+
 </div>
-<script>
+
+<!--script>
 	$(document).ready(function(){
 	<?php foreach($servers as $server):?>
 		$.post(
@@ -123,4 +147,4 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 		);
 	<?php endforeach;?>
 	});
-</script>
+</script-->
