@@ -334,16 +334,13 @@ class BansController extends Controller
 			$js .= "$('#bandetail-steam').html('" . $model->player_id . "');";
 			//$js .= "$('#bandetail-steamcommynity').html('" . Prefs::steam_convert($model->player_id, true) . "');";
 			$js .= "$('#bandetail-ip').html('" . (Webadmins::checkAccess('ip_view') ? $model->player_ip : 'Cкрыт') . "');";
-			$js .= "$('#bandetail-type').html('" . Prefs::getBanType($model->ban_type) . "');";
-			$js .= "$('#bandetail-reason').html('" . CHtml::encode($model->ban_reason) . "');";
+			//$js .= "$('#bandetail-type').html('" . Prefs::getBanType($model->ban_type) . "');";
 			$js .= "$('#bandetail-datetime').html('" . date('d.m.y - H:i:s',$model->ban_created) . "');";
-            $js .= "$('#bandetail-map').html('" . $model->map_name . "');";
-			$js .= "$('#bandetail-expired').html('" . ($model->ban_length == '-1'
-					?
-				'Разбанен'
-					:
-				Prefs::date2word($model->ban_length) .
-				($model->expired == 1 ? ' (истек)' : '')) . "');";
+			$js .= "$('#bandetail-expired').html('" . ($model->ban_length == '-1' ?
+				'Разбанен' :
+				Prefs::date2word($model->ban_length) . ($model->expired == 1 ? ' (истек)' : '')) . "');";
+            $js .= "$('#bandetail-map').html('" .  $model->map_name . "');";
+            $js .= "$('#bandetail-reason').html('" . CHtml::encode($model->ban_reason) . "');";
 			$js .= "$('#bandetail-admin').html('" . CHtml::encode($model->adminName) . "');";
 			$js .= "$('#bandetail-server').html('" . CHtml::encode($model->server_name) . "');";
 			//$js .= "$('#bandetail-kicks').html('" . $model->ban_kicks . "');";

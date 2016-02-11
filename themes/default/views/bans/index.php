@@ -187,25 +187,25 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 		<td id="bandetail-ip">
 		</td>
 	</tr>
-	<tr class="odd">
+	<!--tr class="odd">
 		<td>
 			<b>Тип бана</b>
 		</td>
 		<td id="bandetail-type">
 		</td>
-	</tr>
-	<tr class="odd">
-		<td>
-			<b>Причина</b>
-		</td>
-		<td id="bandetail-reason">
-		</td>
-	</tr>
+	</tr-->
 	<tr class="odd">
 		<td>
 			<b>Дата/Время</b>
 		</td>
 		<td id="bandetail-datetime">
+		</td>
+	</tr>
+	<tr class="odd">
+		<td>
+			<b>Срок</b>
+		</td>
+		<td id="bandetail-expired">
 		</td>
 	</tr>
 	<tr class="odd">
@@ -217,9 +217,9 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 	</tr>
 	<tr class="odd">
 		<td>
-			<b>Срок</b>
+			<b>Причина</b>
 		</td>
-		<td id="bandetail-expired">
+		<td id="bandetail-reason">
 		</td>
 	</tr>
 	<tr class="odd">

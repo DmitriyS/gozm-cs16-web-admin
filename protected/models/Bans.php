@@ -265,7 +265,7 @@ class Bans extends CActiveRecord
             $criteria->compare('admin_nick', $this->admin_nick, true);
         }
         $criteria->compare('ban_type',$this->ban_type,true);
-		$criteria->addSearchCondition('ban_reason',$this->ban_reason);
+		$criteria->addSearchCondition('ban_reason',$this->ban_reason,true);
 		$criteria->compare('cs_ban_reason',$this->cs_ban_reason,true);
 		if ($this->ban_created) {
             $start = strtotime("{$this->ban_created} 00:00:00");
