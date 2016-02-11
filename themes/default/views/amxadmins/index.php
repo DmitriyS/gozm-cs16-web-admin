@@ -19,7 +19,7 @@ $this->pageTitle = Yii::app()->name . ' - ' . $page;
 $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
     'links'=>array($page),
 ));
-
+/*
 Yii::app()->clientScript->registerScript('viewdetail', "
 $('.admintr').live('click', function(){
 	$('#loading').show();
@@ -29,7 +29,9 @@ $('.admintr').live('click', function(){
 	});
 })
 ");
+*/
 ?>
+
 <h2><?php echo $page; ?></h2>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
@@ -41,7 +43,7 @@ $('.admintr').live('click', function(){
 	'enableSorting' => false,
 	'rowHtmlOptionsExpression'=>'array(
 		"id" => "admin_$data->id",
-		"style" => "cursor:pointer;",
+		//"style" => "cursor:pointer;",
 		"class" => "admintr"
 	)',
 	'pager' => array(
@@ -97,14 +99,15 @@ $('.admintr').live('click', function(){
 		),
 	),
 )); ?>
-<?php $this->beginWidget('bootstrap.widgets.TbModal',
+
+<!--?php $this->beginWidget('bootstrap.widgets.TbModal',
 	array(
 		'id'=>'adminDetail',
 		'htmlOptions' => array(
 			'style' => 'width: 600px; margin-left: -300px; min-height: 600px'
 		)
-)); ?>
-<div class="modal-header">
+)); ?-->
+<!--div class="modal-header">
     <a class="close" data-dismiss="modal" rel="tooltip" data-placement="left" title="Закрыть">&times;</a>
     <h4>Детали админа</h4>
 </div>
@@ -127,8 +130,8 @@ $('.admintr').live('click', function(){
 			'data-dismiss'=>'modal',
 		),
     )); ?>
-</div>
-<?php $this->endWidget(); ?>
+</div-->
+<!--?php $this->endWidget(); ?-->
 
 <!--div style="width: 200px; margin: 0 auto; text-align: center">
 	<?php $this->widget('bootstrap.widgets.TbButton', array(
