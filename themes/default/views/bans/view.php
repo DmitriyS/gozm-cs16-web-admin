@@ -101,6 +101,15 @@ if($model->ban_length == '-1') {
 	'type' => array('condensed', 'bordered'),
 	'htmlOptions' => array('style'=>'text-align: left'),
 	'attributes'=>array(
+        'player_nick',
+		array(
+			'name' => 'player_id',
+			'type' => 'raw',
+			'value' => Prefs::steam_convert($model->player_id, TRUE)
+				? CHtml::link($model->player_id, 'http://steamcommunity.com/profiles/'
+						. Prefs::steam_convert($model->player_id), array('target' => '_blank'))
+				: $model->player_id,
+		),
 		array(
 			'name' => 'player_ip',
 			'type' => 'raw',
@@ -116,17 +125,6 @@ if($model->ban_length == '-1') {
 			'visible' => ($ipaccess)
 		),
 		array(
-			'name' => 'player_id',
-			'type' => 'raw',
-			'value' => Prefs::steam_convert($model->player_id, TRUE)
-				? CHtml::link($model->player_id, 'http://steamcommunity.com/profiles/'
-						. Prefs::steam_convert($model->player_id), array('target' => '_blank'))
-				: $model->player_id,
-		),
-		'player_nick',
-		'adminName:html',
-		'ban_reason',
-		array(
 			'name' => 'ban_created',
 			'value' => date('d.m.Y - H:i:s', $model->ban_created),
 		),
@@ -136,6 +134,9 @@ if($model->ban_length == '-1') {
 			'value' => $length
 		),
 		'expiredTime',
+		'map_name',
+		'ban_reason',
+		'adminName:html',
 		'server_name',
 		//'ban_kicks',
 	),
