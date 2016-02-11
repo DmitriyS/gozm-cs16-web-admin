@@ -119,7 +119,7 @@ class Amxadmins extends CActiveRecord
 		$criteria->compare('flags',$this->flags,true);
 		$criteria->compare('steamid',$this->steamid,true);
 		$criteria->compare('nickname',$this->nickname,true);
-		$criteria->compare('icq',$this->icq);
+		$criteria->compare('icq',$this->icq,true);
 		$criteria->compare('ashow',$this->ashow);
 		$criteria->compare('created',$this->created);
         $criteria->compare('last_seen',$this->last_seen);
