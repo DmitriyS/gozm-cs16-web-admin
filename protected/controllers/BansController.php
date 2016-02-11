@@ -133,17 +133,16 @@ class BansController extends Controller
 		));
 
 		// История банов
-		$history = new CActiveDataProvider('Bans', array(
+		$history = new CActiveDataProvider('History', array(
 			'criteria' => array(
-				'condition' => '`bid` <> :hbid AND (`player_ip` = :hip OR `player_id` = :hid)',
+				'condition' => '`player_ip` = :hip OR `player_id` = :hid',
 				'params' => array(
-					':hbid' => $id,
 					':hip' => $model->player_ip,
 					':hid' => $model->player_id
 				),
 			),
 			'pagination' => array(
-				'pageSize' => 5
+				'pageSize' => 10
 			)
 		));
 

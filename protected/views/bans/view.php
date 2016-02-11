@@ -156,10 +156,15 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 	'template' => '{items} {pager}',
 	'columns'=>array(
 		array(
+			'name' => 'ban_created',
+			'value' => 'date("d.m.Y", $data->ban_created)',
+		),
+		array(
 			'name' => 'player_nick',
 			'type' => 'html',
-			'value' => 'Chtml::link($data->player_nick, Yii::app()->createUrl("/bans/view", array("id" => $data->bid)))'
+			'value' => 'Chtml::link($data->player_nick, Yii::app()->createUrl("/history/view", array("id" => $data->bhid)))'
 		),
+		/*
 		array(
 			'name' => 'player_id',
 			'type' => 'raw',
@@ -173,22 +178,16 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 			'value' => '$data->player_ip',
 			'visible' => $ipaccess
 		),
-		array(
-			'name' => 'ban_created',
-			'value' => 'date("d.m.Y - H:i:s", $data->ban_created)',
-		),
+		*/
 		'ban_reason',
-
 		array(
 			'name' => 'ban_length',
 			'type' => 'raw',
-			'value' =>
-				'$data->ban_length == "-1"
-					?
-				"Разбанен"
-					:
-				Prefs::date2word($data->ban_length) .
-				($data->expired == 1 ? " (истек)" : "")'
+			'value' => 'Prefs::date2word($data->ban_length)'
+		),
+		array(
+			'name' => 'unban_admin_nick',
+			'value' => '$data->unban_admin_nick == "amxbans" ? "Срок бана истек" : $data->unban_admin_nick'
 		),
 	),
 ));
