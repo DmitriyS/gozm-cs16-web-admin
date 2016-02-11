@@ -68,7 +68,7 @@ $('.admintr').live('click', function(){
 		array(
 			'name' => 'icq',
 			'type' => 'raw',
-			'value' => '$data->icq != '' ? CHtml::encode($data->icq) : "<i>Не задан</i>"',
+			'value' => '$data->icq ? CHtml::link($data->icq, $data->icq, array("target"=>"_blank")) : "<i>Не задан</i>"',
 			'htmlOptions' => array(
 				'style' => 'width: 100px;'
 			)
