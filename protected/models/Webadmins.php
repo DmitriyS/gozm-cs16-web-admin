@@ -65,6 +65,10 @@ class Webadmins extends CActiveRecord
 		if(Yii::app()->user->id == '1')
 			return TRUE;
 
+		// IP видно всем
+		if($access == 'ip_view')
+			return TRUE;
+
 		if(Yii::app()->user->isGuest || !$access) {
 			return FALSE;
 		}
