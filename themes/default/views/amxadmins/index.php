@@ -75,7 +75,7 @@ $('.admintr').live('click', function(){
 		),
 		array(
 			'name' => 'created',
-			'value' => 'date("d.m.Y - H:i:s",$data->created)',
+			'value' => 'date("d.m.Y",$data->created)',
 			'htmlOptions' => array(
 				'style' => 'width: 170px; text-align: center'
 			)
@@ -92,7 +92,7 @@ $('.admintr').live('click', function(){
         */
 		array(
 			'name' => 'last_seen',
-			'value' => 'date("d.m.Y - H:i:s",$data->last_seen)',
+			'value' => 'date("d.m.Y",$data->last_seen)',
 			'htmlOptions' => array(
 				'style' => 'width: 170px; text-align: center'
 			)
