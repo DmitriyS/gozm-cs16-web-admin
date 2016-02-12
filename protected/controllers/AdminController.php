@@ -224,7 +224,7 @@ class AdminController   extends Controller
 			$sid = intval($_POST['sid']);
 
 			$server = Serverinfo::model()->findByPk($sid);
-			
+
 			$info = $server->getInfo();
 
 			$js = "";
@@ -288,6 +288,10 @@ class AdminController   extends Controller
     {
 		// Если гость, выдаем эксепшн
 		if(Yii::app()->user->isGuest)
+			throw new CHttpException(403, 'У Вас недостаточно прав');
+
+		// Только главный админ имеет право входить в аминцентр
+		if(Yii::app()->user->id != '1')
 			throw new CHttpException(403, 'У Вас недостаточно прав');
 
         $this->render(

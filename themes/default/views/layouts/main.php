@@ -88,6 +88,7 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
+						<?php if(Yii::app()->user->id == '1'):?>
 						<li>
 							<?php echo CHtml::link(
 									'<i class="icon-globe"></i> Админцентр',
@@ -98,6 +99,7 @@
 						<li>
 							<hr />
 						</li>
+						<?php endif; ?>
 						<li>
 							<?php echo CHtml::link(
 									'<i class="icon-off"></i> Выйти',
