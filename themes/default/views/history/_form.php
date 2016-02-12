@@ -75,7 +75,7 @@ if(!$model->isNewRecord)
 			<?php echo CHtml::dropDownList('Reasons', 'selfreason', Reasons::getList())?>
 		</div>
 	</div>
-	
+
 	<?php echo $form->textFieldRow($model, 'ban_reason', array('size'=>32,'maxlength'=>32)); ?>
 
 	<?php echo $form->error($model,'ban_reason'); ?>
@@ -90,7 +90,8 @@ if(!$model->isNewRecord)
 		?>
 		<?php echo CHtml::link(
 				'Отмена',
-				Yii::app()->createUrl('/admin/index'),
+				//Yii::app()->createUrl('/admin/index'),
+				Yii::app()->request->urlReferrer,
 				array(
 					'class' => 'btn btn-danger'
 				)
