@@ -93,9 +93,14 @@ class Players extends CActiveRecord
 		));
 	}
 
-    public static function topPlayersSQL($limit=10)
+    public static function rankedPlayersSQL()
     {
-        return "SELECT * FROM (SELECT *, (@_c := @_c + 1) AS `rank`, ((`infect` + `zombiekills`*2 + `humankills` + `knife_kills`*5 + `best_zombie` + `best_human` + `escape_hero`*3 + `best_player`*10) / (`infected` + `death` + 300)) AS `skill` FROM (SELECT @_c := 0) r, `bio_players` ORDER BY `skill` DESC) AS `newtable` WHERE `rank` <= ".$limit." ORDER BY `rank` LIMIT ".$limit.";";
+        return "SELECT `nick`, `rank`, `skill` FROM
+        	(SELECT *, (@_c := @_c + 1) AS `rank`,
+         	((`infect` + `zombiekills`*2 + `humankills` + `knife_kills`*5 +
+         	`best_zombie` + `best_human` + `best_player`*10 + `escape_hero`*3) / (`infected` + `death` + 300)) AS `skill`
+			FROM (SELECT @_c := 0) r, `bio_players` ORDER BY `skill` DESC) AS `newtable`
+			WHERE `rank` <= 10 ORDER BY `rank` ASC LIMIT 0, 10;";
     }
 
 }
