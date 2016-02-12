@@ -42,14 +42,14 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 			'enableSorting' => false,
 			'rowHtmlOptionsExpression'=>'array(
 				"style" => "cursor:pointer;",
-				"class" => $data->expired == 1 ? "bantr success" : "bantr",
+				"class" => $data->unbanned == 1 ? "bantr success" : "bantr",
 				"onclick" => "document.location.href=\'".Yii::app()->createUrl("/bans/view", array("id" => $data->bid))."\'"
 			)',
 			'columns'=>array(
 				'player_nick',
 				array(
-					'name' => 'map_name',
-					'value' => '$data->map_name',
+					'name' => 'ban_reason',
+					'value' => '$data->ban_reason',
 				),
 				array(
 					'name'=>'ban_length',

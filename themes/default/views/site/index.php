@@ -48,8 +48,8 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 			'columns'=>array(
 				'player_nick',
 				array(
-					'name' => 'map_name',
-					'value' => '$data->map_name',
+					'name' => 'ban_reason',
+					'value' => '$data->ban_reason',
 				),
 				array(
 					'name'=>'ban_length',
