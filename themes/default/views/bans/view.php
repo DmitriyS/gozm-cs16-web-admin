@@ -33,7 +33,7 @@ if($model->ban_length == '-1') {
 } else {
     $length = Prefs::date2word($model->ban_length);
     if($model->unbanned) {
-        $length .= '(Истек)';
+        $length .= ' (Истек)';
     } elseif(Yii::app()->hasModule('billing')) {
         $length .= CHtml::link(
             'Купить разбан',

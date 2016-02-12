@@ -12,8 +12,8 @@
  * @license http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru  «Attribution-NonCommercial-ShareAlike»
  */
 
-$page = 'Банлист';
-$this->pageTitle = Yii::app()->name . ' - ' . $page . ' - Детали бана ' . $model->player_nick;
+$page = 'История банов';
+$this->pageTitle = Yii::app()->name . ' - ' . $page . ' - Детали бана из истории ' . $model->player_nick;
 $this->breadcrumbs=array(
 	$page=>array('index'),
 	$model->player_nick,
@@ -31,26 +31,17 @@ if($geo) {
 if($model->ban_length == '-1') {
     $length = 'Разбанен';
 } else {
-    $length = Prefs::date2word($model->ban_length);
-    if($model->unbanned) {
-        $length .= ' (Истек)';
-    } elseif(Yii::app()->hasModule('billing')) {
-        $length .= CHtml::link(
-            'Купить разбан',
-			array('/billing/unban', 'id' => $model->primaryKey),
-			array('class' => 'btn btn-mini btn-success pull-right')
-        );
-    }
+    $length = Prefs::date2word($model->ban_length) . ' (Истек)';
 }
 ?>
 
-<h2>Подробности бана <i><?php echo CHtml::encode($model->player_nick); ?></i></h2>
+<h2>Подробности истории бана <i><?php echo CHtml::encode($model->player_nick); ?></i></h2>
 <div style="float: right">
 	<?php
 	if(Webadmins::checkAccess('bans_edit', $model->admin_nick)):
 	echo CHtml::link(
 		'<i class="icon-edit"></i>',
-		$this->createUrl('/bans/update', array('id' => $model->bid)),
+		$this->createUrl('/bans/update', array('id' => $model->bhid)),
 		array(
 			'rel' => 'tooltip',
 			'title' => 'Редактировать',
@@ -60,28 +51,10 @@ if($model->ban_length == '-1') {
 	?>
 	&nbsp;
 	<?php
-	if(Webadmins::checkAccess('bans_unban', $model->admin_nick) && !$model->unbanned):
-	echo CHtml::ajaxLink(
-		'<i class="icon-remove"></i>',
-		$this->createUrl('/bans/unban', array('id' => $model->bid)),
-		array(
-			'type' => 'post',
-			'beforeSend' => 'function() {if(!confirm("Разбанить игрока '.$model->player_nick.'?")) {return false;} }',
-			'success' => 'function(data) {alert(data); document.location.href="'.$this->createUrl('/bans/index').'";}'
-		),
-		array(
-			'rel' => 'tooltip',
-			'title' => 'Разбанить',
-		)
-	);
-	endif;
-	?>
-	&nbsp;
-	<?php
 	if(Webadmins::checkAccess('bans_delete', $model->admin_nick)):
 	echo CHtml::ajaxLink(
 		'<i class="icon-trash"></i>',
-		$this->createUrl('/bans/delete', array('id' => $model->bid, 'ajax' => 1)),
+		$this->createUrl('/bans/delete', array('id' => $model->bhid, 'ajax' => 1)),
 		array(
 			'type' => 'post',
 			'beforeSend' => 'function() {if(!confirm("Удалить бан?")) {return false;} }',
@@ -133,10 +106,11 @@ if($model->ban_length == '-1') {
 			'type' => 'raw',
 			'value' => $length
 		),
-		'expiredTime',
+		//'expiredTime',
 		'map_name',
 		'ban_reason',
-		'adminName:html',
+		//'adminName:html',
+		'admin_nick',
 		'server_name',
 		//'ban_kicks',
 	),

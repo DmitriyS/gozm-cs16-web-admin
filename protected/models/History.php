@@ -96,7 +96,7 @@ class History extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('bhid',$this->bid);
+		$criteria->compare('bhid',$this->bhid);
 		$criteria->addSearchCondition('player_ip',$this->player_ip);
 		$criteria->addSearchCondition('player_id',$this->player_id);
 		$criteria->addSearchCondition('player_nick',$this->player_nick);

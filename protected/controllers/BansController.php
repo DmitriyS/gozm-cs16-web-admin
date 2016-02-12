@@ -142,7 +142,7 @@ class BansController extends Controller
 				),
 			),
 			'pagination' => array(
-				'pageSize' => 10
+				'pageSize' => 5
 			)
 		));
 
