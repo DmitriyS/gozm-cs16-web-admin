@@ -108,8 +108,8 @@ CREATE TABLE IF NOT EXISTS `%prefix%_levels` (
   PRIMARY KEY (`level`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `%prefix%_levels` (`level`, `bans_add`, `bans_edit`, `bans_delete`, `bans_unban`, `bans_import`, `bans_export`, `amxadmins_view`, `amxadmins_edit`, `webadmins_view`, `webadmins_edit`, `websettings_view`, `websettings_edit`, `permissions_edit`, `prune_db`, `servers_edit`, `ip_view`) VALUES
-(1, 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes');
+-- INSERT INTO `%prefix%_levels` (`level`, `bans_add`, `bans_edit`, `bans_delete`, `bans_unban`, `bans_import`, `bans_export`, `amxadmins_view`, `amxadmins_edit`, `webadmins_view`, `webadmins_edit`, `websettings_view`, `websettings_edit`, `permissions_edit`, `prune_db`, `servers_edit`, `ip_view`) VALUES
+-- (1, 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes');
 
 CREATE TABLE IF NOT EXISTS `%prefix%_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -121,8 +121,8 @@ CREATE TABLE IF NOT EXISTS `%prefix%_logs` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
-INSERT INTO `%prefix%_logs` (`id`, `timestamp`, `ip`, `username`, `action`, `remarks`) VALUES
-(1, UNIX_TIMESTAMP(), '127.0.0.1', 'admin', 'Install', 'Installation CS:Bans 1.0');
+-- INSERT INTO `%prefix%_logs` (`id`, `timestamp`, `ip`, `username`, `action`, `remarks`) VALUES
+-- (1, UNIX_TIMESTAMP(), '127.0.0.1', 'admin', 'Install', 'Installation CS:Bans 1.0');
 
 CREATE TABLE IF NOT EXISTS `%prefix%_reasons` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -171,10 +171,10 @@ CREATE TABLE IF NOT EXISTS `%prefix%_usermenu` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
-INSERT INTO `%prefix%_usermenu` VALUES ('1', '1', '1', '_HOME', '/site/index', '_HOME', '/site/index');
-INSERT INTO `%prefix%_usermenu` VALUES ('2', '2', '1', '_BANLIST', '/bans/index', '_BANLIST', '/bans/index');
-INSERT INTO `%prefix%_usermenu` VALUES ('3', '3', '1', '_ADMLIST', '/amxadmins/index', '_ADMLIST', '/amxadmins/index');
-INSERT INTO `%prefix%_usermenu` VALUES ('5', '5', '1', '_SERVER', '/serverinfo/index', '_SERVER', '/serverinfo/index');
+-- INSERT INTO `%prefix%_usermenu` VALUES ('1', '1', '1', '_HOME', '/site/index', '_HOME', '/site/index');
+-- INSERT INTO `%prefix%_usermenu` VALUES ('2', '2', '1', '_BANLIST', '/bans/index', '_BANLIST', '/bans/index');
+-- INSERT INTO `%prefix%_usermenu` VALUES ('3', '3', '1', '_ADMLIST', '/amxadmins/index', '_ADMLIST', '/amxadmins/index');
+-- INSERT INTO `%prefix%_usermenu` VALUES ('5', '5', '1', '_SERVER', '/serverinfo/index', '_SERVER', '/serverinfo/index');
 
 CREATE TABLE IF NOT EXISTS `%prefix%_webadmins` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
@@ -214,5 +214,5 @@ CREATE TABLE IF NOT EXISTS `%prefix%_webconfig` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
-INSERT INTO `%prefix%_webconfig` (`id`, `cookie`, `bans_per_page`, `design`, `banner`, `banner_url`, `default_lang`, `start_page`, `show_comment_count`, `show_demo_count`, `show_kick_count`, `demo_all`, `comment_all`, `use_capture`, `max_file_size`, `file_type`, `auto_prune`, `max_offences`, `max_offences_reason`, `use_demo`, `use_comment`) VALUES
-(1, 'csbans', 50, 'default', 'amxbans.png', 'http://craft-soft.ru', 'russian', '/site/index', 1, 1, 1, 0, 0, 1, 2, 'dem,zip,rar,jpg,gif,png', 0, 10, 'max offences reached', 1, 1);
+-- INSERT INTO `%prefix%_webconfig` (`id`, `cookie`, `bans_per_page`, `design`, `banner`, `banner_url`, `default_lang`, `start_page`, `show_comment_count`, `show_demo_count`, `show_kick_count`, `demo_all`, `comment_all`, `use_capture`, `max_file_size`, `file_type`, `auto_prune`, `max_offences`, `max_offences_reason`, `use_demo`, `use_comment`) VALUES
+-- (1, 'csbans', 50, 'default', 'amxbans.png', 'http://craft-soft.ru', 'russian', '/site/index', 1, 1, 1, 0, 0, 1, 2, 'dem,zip,rar,jpg,gif,png', 0, 10, 'max offences reached', 1, 1);
