@@ -20,12 +20,23 @@ $this->breadcrumbs=array(
 );
 if($geo) {
 	Yii::app()->clientScript->registerScriptFile('//api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU',CClientScript::POS_END);
-	Yii::app()->clientScript->registerScript('yandexmap', "
-		ymaps.ready(inityamaps);
-		function inityamaps () {
-			var myMap = new ymaps.Map('map', {center: [{$geo['lat']}, {$geo['lng']}], zoom: 10});
-		}
-	",CClientScript::POS_END);
+
+	if ($geo['lat'] && $geo['lng']) {
+		Yii::app()->clientScript->registerScript('yandexmap', "
+			ymaps.ready(inityamaps);
+			function inityamaps () {
+				var myMap = new ymaps.Map('map', {center: [{$geo['lat']}, {$geo['lng']}], zoom: 10});
+			}
+		",CClientScript::POS_END);
+	}
+	else {
+		Yii::app()->clientScript->registerScript('yandexmap', "
+			ymaps.ready(inityamaps);
+			function inityamaps () {
+				var myMap = new ymaps.Map('map', {center: [55.76, 37.64], zoom: 2});
+			}
+		",CClientScript::POS_END);
+	}
 }
 
 if($model->ban_length == '-1') {

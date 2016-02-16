@@ -74,7 +74,7 @@ class BansController extends Controller
 		$ipaccess = Webadmins::checkAccess('ip_view');
 		if($ipaccess) {
             $geo = array(
-                'city' => 'Н/А',
+                'city' => 'Не определен',
                 'region' => 'Не определен',
                 'country' => 'Не определен',
                 'lat' => 0,
@@ -84,11 +84,11 @@ class BansController extends Controller
             if($get) {
                 $xml = @simplexml_load_string($get);
                 if(!empty($xml->ip)) {
-                    $geo['city'] = $xml->ip->city;
-                    $geo['region'] = $xml->ip->region;
-                    $geo['country'] = $xml->ip->country;
-                    $geo['lat'] = $xml->ip->lat;
-                    $geo['lng'] = $xml->ip->lng;
+                    $geo['city'] = isset($xml->ip->city) ? $xml->ip->city : $geo['city'];
+                    $geo['region'] = isset($xml->ip->region) ? $xml->ip->region : $geo['region'];
+                    $geo['country'] = isset($xml->ip->country) ? $xml->ip->country : $geo['country'];
+                    $geo['lat'] = isset($xml->ip->lat) ? $xml->ip->lat : $geo['lat'];
+                    $geo['lng'] = isset($xml->ip->lng) ? $xml->ip->lng : $geo['lng'];
                 }
             }
 		}
