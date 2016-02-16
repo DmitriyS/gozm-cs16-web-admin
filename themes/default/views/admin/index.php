@@ -164,8 +164,7 @@ $sysprefs = Prefs::sysprefs();
 						<input type="button" class="btn btn-small btn-info bdaction span12" id="optimizedb" value="Оптимизация базы">
 					</td>
 				</tr>
-				<!--
-				<tr class="odd">
+				<!--tr class="odd">
 					<td>
 						<div class="left muted">
 							<b>Оптимизация таблицы банов</b>
@@ -174,13 +173,12 @@ $sysprefs = Prefs::sysprefs();
 							<input type="button" class="btn btn-small btn-info bdaction" id="optimizebanstable" value="Ok">
 						</div>
 					</td>
-				</tr>
-				-->
-				<tr class="odd">
+				</tr-->
+				<!--tr class="odd">
 					<td>
 						<input type="button" class="btn btn-small btn-info bdaction span12" id="truncatebans" value="Очистить банлист">
 					</td>
-				</tr>
+				</tr-->
 			</tbody>
 		</table>
     </div>
