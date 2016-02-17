@@ -69,16 +69,18 @@ class BansController extends Controller
 		if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
         }
-		$geo = false;
-		// Проверка прав на просмотр IP
-		$ipaccess = Webadmins::checkAccess('ip_view');
-		if($ipaccess) {
+
+        $geo = false;
+        // Проверка прав на просмотр IP
+        $ipaccess = Webadmins::checkAccess('ip_view');
+        if($ipaccess) {
             $geo = array(
                 'city' => 'Не определен',
                 'region' => 'Не определен',
-                'country' => 'Не определен',
+                'country' => 'Не определена',
                 'lat' => 0,
                 'lng' => 0,
+                'zoom' => 10,
             );
 			$get = @file_get_contents('http://ipgeobase.ru:7020/geo?ip=' . $model->player_ip);
             if($get) {
@@ -92,6 +94,16 @@ class BansController extends Controller
                 }
             }
 		}
+        if($geo['lat'] == 0 && $geo['lng'] == 0)
+        {
+            if($geo['country'] !== 'Не определена')
+            {
+                $lat_lng = Yii::app()->CountryToLatLng->lookup($geo['country']);
+                $geo['lat'] = $lat_lng['lat'];
+                $geo['lng'] = $lat_lng['lng'];
+                $geo['zoom'] = $lat_lng['zoom'];
+            }
+        }
 
 		// Добавление файла
 		if(isset($_POST['Files']) && !empty($_POST['Files']['name'])) {

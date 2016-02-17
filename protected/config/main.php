@@ -59,7 +59,8 @@ return array(
 		'log',
 		'DConfig',
 		'Ip2Country',
-		),
+		'Country2LatLng',
+	),
 	// Автозагружаемые модели и компоненты
 	'import'=>array(
 		'application.models.*',
@@ -91,6 +92,9 @@ return array(
 		),
 		'IpToCountry'=>array(
 			'class' => 'Ip2Country'
+		),
+		'CountryToLatLng'=>array(
+			'class' => 'Country2LatLng'
 		),
 		// ЧПУ
 		'urlManager'=>array(
