@@ -24,7 +24,11 @@ if($geo) {
 	Yii::app()->clientScript->registerScript('yandexmap', "
 		ymaps.ready(inityamaps);
 		function inityamaps () {
-			var myMap = new ymaps.Map('map', {center: [{$geo['lat']}, {$geo['lng']}], zoom: {$geo['zoom']}});
+			var myMap = new ymaps.Map('map', {
+				center: [{$geo['lat']}, {$geo['lng']}],
+				zoom: {$geo['zoom']},
+				behaviors: ['default', 'scrollZoom']
+			});
 		}
 	",CClientScript::POS_END);
 }
