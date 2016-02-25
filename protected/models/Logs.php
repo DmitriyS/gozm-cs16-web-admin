@@ -46,7 +46,7 @@ class Logs extends CActiveRecord
 		if(array_key_exists($type, $types))
 			return $types[$type];
 
-		return 'Другая';
+		return $type;
 	}
 
 	public function tableName()
