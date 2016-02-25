@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS `%prefix%_bans` (
   `admin_nick` varchar(100) DEFAULT 'Unknown',
   `ban_type` varchar(10) DEFAULT 'S',
   `ban_reason` varchar(100) DEFAULT NULL,
-  `cs_ban_reason` varchar(100) DEFAULT NULL,
   `ban_created` int(11) DEFAULT NULL,
   `ban_length` int(11) DEFAULT NULL,
   `server_ip` varchar(32) DEFAULT NULL,

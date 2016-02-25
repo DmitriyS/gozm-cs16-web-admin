@@ -20,7 +20,6 @@
  * @property string $admin_nick Ник админа
  * @property string $ban_type Тип бана
  * @property string $ban_reason Причина
- * @property string $cs_ban_reason Доп. причина
  * @property integer $ban_created Дата добавления
  * @property integer $ban_length Срок бана
  * @property string $server_ip IP сервера
@@ -63,10 +62,10 @@ class Bans extends CActiveRecord
 			array('ban_length, imported', 'numerical', 'integerOnly'=>true),
 			array('player_ip', 'match', 'pattern' => '/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/'),
 			array('player_id', 'match', 'pattern' => '/^(STEAM|VALVE)_([0-9]):([0-9]):\d{1,21}$/'),
-			array('player_nick, ban_reason, cs_ban_reason', 'length', 'max'=>100),
+			array('player_nick, ban_reason', 'length', 'max'=>100),
 			array('ban_type', 'in', 'range' => array('S', 'SI')),
 			//array('expiredTime', 'safe'),
-			array('bid, player_ip, player_id, player_nick, admin_ip, admin_id, admin_nick, ban_type, ban_reason, cs_ban_reason, ban_created, ban_length, server_ip, server_name, map_name, ban_kicks, expired, imported, expiredTime', 'safe', 'on'=>'search'),
+			array('bid, player_ip, player_id, player_nick, admin_ip, admin_id, admin_nick, ban_type, ban_reason, ban_created, ban_length, server_ip, server_name, map_name, ban_kicks, expired, imported, expiredTime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -121,7 +120,6 @@ class Bans extends CActiveRecord
 			'adminName'         => 'Админ',
 			'ban_type'			=> 'Тип бана',
 			'ban_reason'		=> 'Причина',
-			'cs_ban_reason'		=> 'Доп. Причина',
 			'ban_created'		=> 'Дата',
 			'ban_length'		=> 'Срок бана',
 			'server_ip'			=> 'IP сервера',
@@ -266,7 +264,6 @@ class Bans extends CActiveRecord
         }
         $criteria->compare('ban_type',$this->ban_type,true);
 		$criteria->addSearchCondition('ban_reason',$this->ban_reason,true);
-		$criteria->compare('cs_ban_reason',$this->cs_ban_reason,true);
 		if ($this->ban_created) {
             $start = strtotime("{$this->ban_created} 00:00:00");
             $end = strtotime("{$this->ban_created} 23:59:59");
