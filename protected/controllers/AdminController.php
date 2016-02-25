@@ -153,17 +153,17 @@ class AdminController   extends Controller
 
 		switch ($_POST['action'])
 		{
-			case 'truncatebans':
+			case 'truncate_bans':
 				Yii::app()->db->createCommand()->truncateTable('{{bans}}');
 				Yii::app()->end("$('#loading').hide();alert('Таблица банов успешно очищена');");
 
-			case 'clearcache':
+			case 'clear_cache':
 				$dir = ROOTPATH."/assets";
 				self::removeDirRec($dir);
 				Yii::app()->cache->flush();
 				Yii::app()->end("$('#loading').hide();alert('Кэш очищен');");
 
-			case 'optimizedb':
+			case 'optimize_database':
 				$query = Yii::app()->db->createCommand("SHOW TABLES FROM `" . Yii::app()->params['dbname']. "` LIKE '".Yii::app()->db->tablePrefix."%'")->queryAll();
 				$tables = "";
 				foreach($query as $tmp) {
@@ -174,39 +174,59 @@ class AdminController   extends Controller
 				$alert = $optimize ? "База оптимизирована" : "Ошибка оптимизации";
 				Yii::app()->end("$('#loading').hide();alert('". $alert."');");
 
-			case 'optimizebanstable':
-				//$query=mysql_query("SELECT ba.bid,ba.ban_created,ba.ban_length,se.timezone_fixx FROM ".$config->db_prefix."_bans as ba
-				//			LEFT JOIN ".$config->db_prefix."_serverinfo AS se ON ba.server_ip=se.address WHERE ba.expired=0");
-				$query = Yii::app()->db->createCommand()
-						->select("ba.bid,ba.ban_created,ba.ban_length,se.timezone_fixx")
-						->from('{{bans}} ba')
-						->leftJoin("{{serverinfo}} se", "ba.server_ip=se.address")
-						->where("ba.expired=0")->queryAll(true);
+			case 'clear_banlist':
+				$data = Yii::app()->db->createCommand()
+						->select()
+						->from("{{bans}}")
+						//->leftJoin("{{serverinfo}} se", "ba.server_ip=se.address")
+						->where("ban_created + ban_length*60 < UNIX_TIMESTAMP() AND ban_length != 0")
+						->queryAll(true);
 
-				$prunecount="";
+				$prunecount=0;
 
-				foreach($query as $tmp=>$val)
+				foreach($data as $ban)
 				{
-					//foreach($tmp as $result=>$val)
-					//{
-						$prunecount.= $val;
-					//}
+					Yii::app()->db->createCommand()
+						->insert("{{banhistory}}",
+			         		array(
+	         		      		'player_ip'=>$ban['player_ip'],
+	         		      		'player_id'=>$ban['player_id'],
+	         		      		'player_nick'=>$ban['player_nick'],
+	         		      		'admin_ip'=>"GoZm",
+	         		      		'admin_id'=>$ban['admin_id'],
+	         		      		'admin_nick'=>$ban['admin_nick'],
+	         		      		'ban_type'=>$ban['ban_type'],
+	         		      		'ban_reason'=>$ban['ban_reason'],
+	         		      		'ban_created'=>$ban['ban_created'],
+	         		      		'ban_length'=>$ban['ban_length'],
+	         		      		'server_ip'=>$ban['server_ip'],
+	         		      		'server_name'=>$ban['server_name'],
+	         		      		'unban_created'=>time(),
+	         		      		'unban_reason'=>"Бан истек",
+	         		      		'unban_admin_nick'=>"GoZm",
+	         		      		'map_name'=>$ban['map_name'],
+							));
+
+					Yii::app()->db->createCommand()
+						->delete("{{bans}}", "bid = :bid", array(':bid'=>$ban['bid']));
+
+					$prunecount++;
 				}
 
-				//($result = $query) {
-					//prune expired bans
-					/*
-					if(($result->ban_created + ($result->timezone_fixx * 60 * 60) + ($result->ban_length * 60)) < time() && $result->ban_length != "0") {
-						$prunecount++;
-						$prune_query = mysql_query("UPDATE `".$config->db_prefix."_bans` SET `expired`=1 WHERE `bid`=".$result->bid);
-						$prune_query = mysql_query("INSERT INTO `".$config->db_prefix."_bans_edit` (`bid`,`edit_time`,`admin_nick`,`edit_reason`) VALUES (
-										'".$result->bid."','".($result->ban_created + ($result->timezone_fixx * 60 * 60) + ($result->ban_length * 60))."','amxbans','Bantime expired')");
-					}
-					 *
-					 */
-					//$prunecount[] = $result;
-				//}
-				Yii::app()->end("$('#loading').hide();alert('". $prunecount['']."');");
+				Yii::app()->db->createCommand()
+					->delete("superban", "unbantime < :now", array(':now'=>time()));
+
+				Yii::app()->db->createCommand()
+					->insert("{{logs}}",
+				        array(
+			            	'timestamp'=>time(),
+			            	'ip'=>$_SERVER['REMOTE_ADDR'],
+			            	'username'=>Yii::app()->user->name,
+			            	'action'=>"Очистка истекших банов",
+			            	'remarks'=>"Очищено ". $prunecount ." истекших банов",
+						));
+
+				Yii::app()->end("$('#loading').hide();alert('Очищено ". $prunecount ." истекших банов');");
 		}
 	}
 
@@ -299,7 +319,7 @@ class AdminController   extends Controller
 			array(
 				'sysinfo'=>array(
 					// Всего банов
-					'bancount' => Bans::model()->cache(300)->count(),
+					'bancount' => History::model()->cache(300)->count(),
 					// Активные баны
 					'activebans' => Bans::model()->cache(300)->count(),
 					// Всего файлов

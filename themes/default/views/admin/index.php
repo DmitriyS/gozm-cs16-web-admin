@@ -120,7 +120,7 @@ $sysprefs = Prefs::sysprefs();
 							<b>Активные баны</b>
 						</div>
 						<div class="pull-right">
-							<?php echo $sysinfo['bancount']; ?>
+							<?php echo $sysinfo['activebans']; ?>
 						</div>
 					</td>
 				</tr>
@@ -156,29 +156,19 @@ $sysprefs = Prefs::sysprefs();
 			<tbody>
 				<tr class="odd">
 					<td>
-						<input type="button" class="btn btn-small btn-info bdaction span12" id="clearcache" value="Очистить кеш">
+						<input type="button" class="btn btn-small btn-info bdaction span12" id="clear_cache" value="Очистить кеш">
 					</td>
 				</tr>
 				<tr class="odd">
 					<td>
-						<input type="button" class="btn btn-small btn-info bdaction span12" id="optimizedb" value="Оптимизация базы">
+						<input type="button" class="btn btn-small btn-info bdaction span12" id="clear_banlist" value="Очистить список банов">
 					</td>
 				</tr>
-				<!--tr class="odd">
+				<tr class="odd">
 					<td>
-						<div class="left muted">
-							<b>Оптимизация таблицы банов</b>
-						</div>
-						<div class="right">
-							<input type="button" class="btn btn-small btn-info bdaction" id="optimizebanstable" value="Ok">
-						</div>
+						<input type="button" class="btn btn-small btn-info bdaction span12" id="optimize_database" value="Оптимизация базы">
 					</td>
-				</tr-->
-				<!--tr class="odd">
-					<td>
-						<input type="button" class="btn btn-small btn-info bdaction span12" id="truncatebans" value="Очистить банлист">
-					</td>
-				</tr-->
+				</tr>
 			</tbody>
 		</table>
     </div>
