@@ -112,6 +112,7 @@ class Usermenu extends CActiveRecord
 			'_BANLIST' => 'Банлист',
 			'_SERVER' => 'Серверы',
 			'_ADMLIST' => 'Админы',
+			'_MAPLIST' => 'Карты',
 			'_SEARCH' => 'Поиск',
 			'_LOGIN' => 'Войти',
 			'_LOGOUT' => 'Выйти',
