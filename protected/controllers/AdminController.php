@@ -207,6 +207,12 @@ class AdminController   extends Controller
 	         		      		'map_name'=>$ban['map_name'],
 							));
 
+					$last_insert_id = Yii::app()->db->getLastInsertID();
+					Yii::app()->db->createCommand()
+						->update("{{comments}}", array('bhid'=>$last_insert_id), 'bid=:bid', array(':bid'=>$ban['bid']));
+					Yii::app()->db->createCommand()
+						->update("{{demos}}", array('bhid'=>$last_insert_id), 'bid=:bid', array(':bid'=>$ban['bid']));
+
 					Yii::app()->db->createCommand()
 						->delete("{{bans}}", "bid = :bid", array(':bid'=>$ban['bid']));
 
