@@ -27,7 +27,6 @@ $this->widget('bootstrap.widgets.TbTabs', array(
 				<ul class="inline">
 					<li><a href="' . Yii::app()->createUrl('/admin/index') . '" class="btn"'.($activebtn == 'admsystem' ? $disabled : '').'>Информация о системе</a></li>
 					<li><a href="' . Yii::app()->createUrl('/Bans/create') . '" class="btn"'.($activebtn == 'admaddban' ? $disabled : '').'>Добавить бан</a></li>
-					<li><a href="' . Yii::app()->createUrl('/admin/addbanonline') . '" class="btn"'.($activebtn == 'addbanonline' ? $disabled : '').'>Добавить бан онлайн</a></li>
 				</ul>',
 			'active' => $active == 'main'
 		),

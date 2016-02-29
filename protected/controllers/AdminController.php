@@ -12,7 +12,7 @@
  * @license http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru  «Attribution-NonCommercial-ShareAlike»
  */
 
-class AdminController   extends Controller
+class AdminController extends Controller
 {
 
     public $layout='//layouts/main';
