@@ -88,12 +88,12 @@ class Amxadmins extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'username' => 'SteamID',
+			'username' => 'SteamID/IP/Ник',
 			'password' => 'Пароль',
 			'access' => 'Доступ',
 			'accessflags' => 'Флаги доступа',
 			'flags' => 'Тип админки',
-			'steamid' => 'Steamid/IP/Ник',
+			'steamid' => 'SteamID',
 			'nickname' => 'Ник',
 			'icq' => 'Контакты',
 			'ashow' => 'Показывать в списке админов',

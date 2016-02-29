@@ -43,8 +43,9 @@ $this->menu=array(
 	)',
 	'columns'=>array(
 		'nickname',
-		'steamid',
+		'password',
 		'access',
+		'username',
 		array(
 			'name' => 'flags',
 			'value' => 'Amxadmins::getAuthType($data->flags)',
