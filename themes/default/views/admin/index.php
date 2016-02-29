@@ -107,7 +107,7 @@ $sysprefs = Prefs::sysprefs();
 				<tr class="odd">
 					<td>
 						<div class="pull-left muted">
-							<b>Кол-во банов в базе</b>
+							<b>Банов в истории</b>
 						</div>
 						<div class="pull-right">
 							<?php echo $sysinfo['bancount']; ?>

@@ -65,16 +65,16 @@ if(!$model->isNewRecord)
 	<?php echo $form->textFieldRow($model, 'player_id', array('size'=>35,'maxlength'=>35)); ?>
 	<?php echo $form->textFieldRow($model, 'player_ip', array('size'=>32,'maxlength'=>32)); ?>
 
-	<?php echo $form->dropDownListRow($model, 'ban_type', array('SI' => 'IP', 'S' => 'SteamID')); ?>
+	<!--?php echo $form->dropDownListRow($model, 'ban_type', array('SI' => 'IP', 'S' => 'SteamID')); ?-->
 
 	<?php //echo $form->dropDownListRow($model, 'ban_reason', Reasons::getList()); ?>
 
-	<div class="control-group ">
+	<!--div class="control-group ">
 		<?php echo CHtml::label('Причина', 'Reasons', array('class' => 'control-label'));?>
 		<div class="controls">
 			<?php echo CHtml::dropDownList('Reasons', 'selfreason', Reasons::getList())?>
 		</div>
-	</div>
+	</div-->
 
 	<?php echo $form->textFieldRow($model, 'ban_reason', array('size'=>32,'maxlength'=>32)); ?>
 
