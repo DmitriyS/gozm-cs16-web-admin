@@ -23,7 +23,7 @@ $this->breadcrumbs=array(
 $this->renderPartial('/admin/mainmenu', array('active' =>'server', 'activebtn' => 'servreasons'));
 
 $this->menu=array(
-	array('label'=>'Добавить группу причин','url'=>array('/reasonsSet/create')),
+	//array('label'=>'Добавить группу причин','url'=>array('/reasonsSet/create')),
 	array('label'=>'Добавить причину','url'=>array('/reasons/create')),
 );
 
@@ -47,9 +47,9 @@ function clearmodal()
 
 <h2>Управление причинами банов</h2>
 
-<h4>Группы причин</h4>
-<small class="text-success">Кликнуть на группе для редактирования</small>
-<?php $this->widget('bootstrap.widgets.TbGridView',array(
+<!--h4>Группы причин</h4>
+<small class="text-success">Кликнуть на группе для редактирования</small-->
+<!--?php $this->widget('bootstrap.widgets.TbGridView',array(
 	'type' => 'bordered condensed striped',
 	'id'=>'reasonsset-grid',
 	'dataProvider'=>$reasonsset,
@@ -83,7 +83,7 @@ function clearmodal()
 			)
 		),
 	),
-)); ?>
+)); ?-->
 
 
 <h4>Причины</h4>
