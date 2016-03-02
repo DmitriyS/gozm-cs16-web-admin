@@ -30,13 +30,12 @@ $this->menu=array(
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
+		'nickname',
+		'username',
 		array(
 			'name' => 'flags',
 			'value' => Amxadmins::getAuthType($model->flags)
 		),
-		'username',
-		'nickname',
-		'steamid',
 		'access',
 		'icq',
 		array(
@@ -48,10 +47,5 @@ $this->menu=array(
 			'type' => 'datetime',
 			'value' => $model->created
 		),
-		array(
-			'name' => 'expired',
-			'value' => $model->expired == 0 ? 'Навсегда' : date('d.m.Y H:i', $model->expired)
-		),
-		'days',
 	),
 )); ?>

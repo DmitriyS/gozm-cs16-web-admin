@@ -64,11 +64,11 @@ class Amxadmins extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('steamid, nickname', 'required'),
+			array('nickname', 'required'),
 			array('accessflags, addtake, servers', 'safe'),
-			array('icq, ashow, days, change', 'numerical', 'integerOnly'=>true),
+			array('ashow, days, change', 'numerical', 'integerOnly'=>true),
 			array('username, access, flags, steamid, nickname', 'length', 'max'=>32),
-			array('password', 'length', 'max'=>50),
+			array('password, icq', 'length', 'max'=>50),
 			array('id, username, password, access, flags, steamid, nickname, icq, ashow, created, last_seen, expired, days', 'safe',  'on'=>'search'),
 		);
 	}
@@ -94,7 +94,7 @@ class Amxadmins extends CActiveRecord
 			'accessflags' => 'Флаги доступа',
 			'flags' => 'Тип админки',
 			'steamid' => 'SteamID',
-			'nickname' => 'Ник',
+			'nickname' => 'Имя',
 			'icq' => 'Контакты',
 			'ashow' => 'Показывать в списке админов',
 			'created' => 'Дата добавления',
@@ -210,7 +210,7 @@ class Amxadmins extends CActiveRecord
 		if($this->isNewRecord) {
 			$this->created = time();
             if($this->password && $this->scenario != 'buy') {
-                $this->password = md5($this->password);
+                //$this->password = md5($this->password);
             }
             if($this->flags != 'a' && !$this->password) {
                 $this->flags .= 'e';
@@ -218,7 +218,7 @@ class Amxadmins extends CActiveRecord
 			$this->expired = $this->days != 0 ? ($this->days * 86400) + time() : 0;
 		} else {
 			if ($this->password) {
-                $this->password = md5($this->password);
+                //$this->password = md5($this->password);
             } else {
                 $oldadmin = Amxadmins::model()->findByPk($this->id);
                 if ($oldadmin->password && !$removePwd) {
@@ -271,9 +271,11 @@ class Amxadmins extends CActiveRecord
             $this->addError('steamid', 'Неверно введен SteamID');
         }
 
+/*
         if ($this->password && !preg_match('#^([a-z0-9]+)$#i', $this->password)) {
 			$this->addError ('password', 'Пароль может содержать только буквы латинского алфавита и цифры');
 		}
+*/
 
         if(!$this->isNewRecord && $this->days < $this->change && $this->addtake === '1')
 		{

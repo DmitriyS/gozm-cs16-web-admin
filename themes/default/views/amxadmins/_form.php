@@ -103,6 +103,10 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
         echo $form->errorSummary($webadmins);
     }
 
+	echo $form->textFieldRow($model,'nickname',array('class' => 'span6','maxlength'=>32));
+	//echo $form->textFieldRow($model,'steamid',array('class' => 'span6','maxlength'=>32));
+	echo $form->textFieldRow($model,'username',array('class' => 'span6','maxlength'=>32));
+
     echo $form->dropDownListRow(
 		$model,
 		'flags',
@@ -112,10 +116,6 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 			'maxlength'=>32,
 		)
 	);
-
-	echo $form->textFieldRow($model,'nickname',array('class' => 'span6','maxlength'=>32));
-	echo $form->textFieldRow($model,'steamid',array('class' => 'span6','maxlength'=>32));
-	echo $form->textFieldRow($model,'username',array('class' => 'span6','maxlength'=>32));
 
     if(!$model->isNewRecord && $model->flags != 'a' && $model->password) {
         $htmlOptions = array(
@@ -130,10 +130,13 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
         );
     }
 
-	echo $form->passwordFieldRow(
+	echo $form->textFieldRow(
 		$model,
 		'password',
-		$htmlOptions
+		//$htmlOptions
+		array(
+            'class' => 'span6',
+        )
 	);
 
 	echo $form->textFieldRow(
@@ -147,6 +150,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 
 	echo $form->textFieldRow($model,'icq',array('class' => 'span6',));
 	echo $form->dropDownListRow($model,'ashow', array('Нет', 'Да'),array('class' => 'span6',));
+
 
 	if($model->isNewRecord):
 		echo $form->textFieldRow(
@@ -171,7 +175,6 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 				'multiple'=>true
 			)
 		);
-
 	else:
 		if($model->expired != 0):
 		echo $form->textFieldRow(
@@ -182,8 +185,10 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 				'disabled' => 'disabled'
 			)
 		);
-	endif;?>
-	<label for="Amxadmins_change">Изменить срок админки</label>
+		endif;
+?>
+
+	<!--label for="Amxadmins_change">Изменить срок админки</label>
 	<div class="row-fluid">
 		<div class="span2">
 
@@ -203,7 +208,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 				<span class="add-on">Дней</span>
 			</div>
 		</div>
-	</div>
+	</div-->
 
 	<?php
 	endif;
