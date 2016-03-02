@@ -289,6 +289,7 @@ class AmxadminsController extends Controller
 				$wa = new Webadmins;
 				$wa->attributes = $_POST['Webadmins'];
 				$wa->username = $_POST['Amxadmins']['nickname'];
+				$wa->password = $_POST['Amxadmins']['password'];
 				$wa->save();
 			}
 

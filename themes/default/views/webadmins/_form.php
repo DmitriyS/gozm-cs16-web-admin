@@ -25,11 +25,11 @@
 <fieldset>
 	<?php echo $form->errorSummary($model); ?>
 	<?php echo $form->textFieldRow($model,'username',array('size'=>32,'maxlength'=>32)); ?>
-	<?php echo $form->passwordFieldRow($model,'password',array('size'=>32,'maxlength'=>32, 'value' => '')); ?>
+	<?php echo $form->textFieldRow($model,'password',array('size'=>32,'maxlength'=>32, 'value' => '')); ?>
 	<?php echo $form->dropdownListRow($model,'level', Levels::getList()); ?>
 	<?php echo $form->textFieldRow($model,'email',array('size'=>60,'maxlength'=>64)); ?>
 	<?php if(!$model->isNewRecord)
-		echo $form->textFieldRow($model,'try'); 
+		echo $form->textFieldRow($model,'try');
 	?>
 </fieldset>
 	<div class="form-actions">

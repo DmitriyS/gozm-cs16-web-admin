@@ -282,9 +282,11 @@ class Amxadmins extends CActiveRecord
 			$this->addError ('', 'Ошибка! Нельзя забрать дней больше, чем у него уже есть');
 		}
 
+/*
         if(empty($this->servers)) {
             $this->addError ('servers', 'Выберите хотябы один сервер');
         }
+*/
 
         if($this->hasErrors()) {
             return $this->getErrors();

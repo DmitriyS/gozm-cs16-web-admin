@@ -38,10 +38,9 @@ class Webadmins extends CActiveRecord
 		return array(
 			array('level', 'numerical', 'integerOnly'=>true),
 			array('username, password', 'length', 'max'=>32),
-			array('username, password, email', 'required'),
+			array('username, password', 'required'),
 			array('username, email','unique'),
 			array('email', 'length', 'max'=>64),
-			array('email', 'email'),
 			array('id, username, password, level, logcode, email, last_action, try', 'safe', 'on'=>'search'),
 		);
 	}
@@ -159,14 +158,15 @@ class Webadmins extends CActiveRecord
 
 			$oldRecord = Webadmins::model()->findByPk($this->id);
 
-			if($this->password && $oldRecord->password !== $this->password)
-				$this->password = md5($this->password);
+			if($this->password && $oldRecord->password !== $this->password) {
+				//$this->password = md5($this->password);
+			}
 			else
 				$this->password = $oldRecord->password;
 
 		}
 		else {
-			$this->password = md5($this->password);
+			//$this->password = md5($this->password);
 		}
 		return TRUE;
 	}
