@@ -18,6 +18,7 @@ $this->breadcrumbs = array(
 	'Системный лог'
 );
 
+/*
 $this->menu = array(
 	array(
 		'label' => 'Удалить все записи',
@@ -27,6 +28,7 @@ $this->menu = array(
 		)
 	)
 );
+*/
 
 Yii::app()->clientScript->registerScript('', '
 	$("a#clearLog").click(function(){
