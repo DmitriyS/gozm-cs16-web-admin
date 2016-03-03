@@ -73,12 +73,14 @@
 <div id="footer">
 	<div class="container">
 		<p class="muted credit">
-			&copy; <?php echo date('Y'); ?> 
-			<?php echo CHtml::link('Craft-Soft Studio', 'http://craft-soft.ru', array('target' => '_blank'));  ?>
-			<br />
-			All Rights Reserved.
-			<br />
-			<br />
+			&copy; <?php echo date('Y'); ?>
+			<?php echo CHtml::link(
+				'Группа ВКонтакте',
+				'http://vk.com/go_zombie',
+				array(
+					'target' => '_blank'
+				)
+			)?>
 		</p>
 	</div>
 </div>

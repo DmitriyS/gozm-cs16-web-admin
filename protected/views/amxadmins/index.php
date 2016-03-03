@@ -80,7 +80,7 @@ $('.admintr').live('click', function(){
 				'style' => 'width: 170px; text-align: center'
 			)
 		),
-		/*
+        /*
 		array(
 			'name' => 'expired',
 			'type' => 'raw',
@@ -89,7 +89,7 @@ $('.admintr').live('click', function(){
 				'style' => 'width: 170px; text-align: center'
 			)
 		),
-		*/
+        */
 		array(
 			'name' => 'last_seen',
 			'value' => 'date("d.m.Y",$data->last_seen)',

@@ -1,6 +1,7 @@
 <?php
 /**
- * Шаблон для вывода в одну колонку
+ * Тема default для сайта CS:Bans
+ * Шаблон вывода контента в одну колонку
  */
 
 /**
@@ -11,9 +12,9 @@
  * @link http://craft-soft.ru/
  * @license http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru  «Attribution-NonCommercial-ShareAlike»
  */
-
-$this->beginContent('//layouts/main'); ?>
+?>
+<?php $this->beginContent('//layouts/main'); ?>
 <div id="content">
 	<?php echo $content; ?>
-</div>
+</div><!-- content -->
 <?php $this->endContent(); ?>

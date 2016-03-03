@@ -1,6 +1,7 @@
 <?php
 /**
- * Шаблон 2 колонки
+ * Тема default для сайта CS:Bans
+ * Шаблон вывода контента в 2 колонки
  */
 
 /**
@@ -11,9 +12,9 @@
  * @link http://craft-soft.ru/
  * @license http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru  «Attribution-NonCommercial-ShareAlike»
  */
-
-$this->beginContent('//layouts/main'); ?>
-<div class="row">
+?>
+<?php $this->beginContent('//layouts/main'); ?>
+<div class="row-fluid">
     <div class="span9">
         <div id="content">
             <?php echo $content; ?>

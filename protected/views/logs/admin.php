@@ -85,7 +85,8 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 		),
 		array(
 			'name' => 'username',
-			'filter' => CHtml::listData(Logs::model()->findAll($criteria), 'username', 'username'),
+			'value' => '$data->username',
+			'filter' => CHtml::listData(Webadmins::model()->findAll(), 'username', 'username'),
 		),
 		array(
 			'name' => 'action',

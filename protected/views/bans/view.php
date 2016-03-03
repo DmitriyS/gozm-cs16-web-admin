@@ -118,7 +118,7 @@ if($model->ban_length == '-1') {
 		array(
 			'name' => 'player_ip',
 			'type' => 'raw',
-			'value' => $geo['city'] ? CHtml::link(
+			'value' => $geo['country'] ? CHtml::link(
 					$model->player_ip,
 					'#',
 					array(
