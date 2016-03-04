@@ -18,7 +18,7 @@ class Players extends CActiveRecord
 			array('nick', 'required'),
 			array('ip', 'match', 'pattern' => '/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/'),
 			array('steam_id', 'match', 'pattern' => '/^(STEAM|VALVE)_([0-9]):([0-9]):\d{1,21}$/'),
-			array('nick', 'length', 'max'=>100),
+			array('nick', 'length', 'max'=>32),
 			array('id, nick, ip, steam_id, last_seen, first_zombie, infect, zombiekills, humankills, death, infected, suicide, extra, knife_kills, best_zombie, best_human, best_player, escape_hero, rank, skill', 'safe', 'on'=>'search'),
 		);
 	}
