@@ -29,8 +29,15 @@ class PlayersController extends Controller
             ),)
          );
 
+        $model=new Players('search');
+		$model->unsetAttributes();
+		if (isset($_GET['Players'])) {
+            $model->attributes = $_GET['Players'];
+        }
+
         $this->render('index',array(
             'dataProvider'=>$dataProvider,
+            'model'=>$model,
         ));
 
     }
