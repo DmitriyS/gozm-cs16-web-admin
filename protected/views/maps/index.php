@@ -31,5 +31,13 @@ $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 			'name' => 'games',
 			'value' => '$data->games',
 		),
+        array(
+			'name' => 'human_wins',
+			'value' => '$data->human_wins',
+		),
+        array(
+			'name' => 'zombie_wins',
+			'value' => '$data->zombie_wins',
+		),
 	),
 )); ?>

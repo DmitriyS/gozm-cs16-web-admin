@@ -15,9 +15,9 @@ class Maps extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('games', 'numerical', 'integerOnly'=>true),
-			array('map', 'length', 'max'=>100),
-			array('id, map, games', 'safe', 'on'=>'search'),
+			array('games, human_wins, zombie_wins', 'numerical', 'integerOnly'=>true),
+			array('map', 'length', 'max'=>32),
+			array('map', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -33,6 +33,8 @@ class Maps extends CActiveRecord
 			'id' => 'ID',
 			'map' => 'Карта',
 			'games' => 'Игр сыграно',
+            'human_wins' => 'Побед людей',
+            'zombie_wins' => 'Побед зомби',
 		);
 	}
 
@@ -43,6 +45,8 @@ class Maps extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('map',$this->map,true);
 		$criteria->compare('games',$this->games);
+        $criteria->compare('human_wins',$this->human_wins);
+        $criteria->compare('zombie_wins',$this->zombie_wins);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
