@@ -2,6 +2,9 @@
 
 class Players extends CActiveRecord
 {
+    public $rank;
+	public $skill;
+
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -32,9 +35,9 @@ class Players extends CActiveRecord
 	{
 		return array(
 			'id'				=> 'Id',
-			'nick'			    => 'Ник игрока',
-			'ip'			    => 'IP игрока',
-			'steam_id'		    => 'Steam игрока',
+			'nick'			    => 'Ник',
+			'ip'			    => 'IP',
+			'steam_id'		    => 'STEAM ID',
 			'last_seen'			=> 'Замечен',
 			'first_zombie'		=> 'Первый зм',
 			'infect'		    => 'Заражения',

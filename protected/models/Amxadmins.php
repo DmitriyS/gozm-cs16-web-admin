@@ -140,7 +140,7 @@ class Amxadmins extends CActiveRecord
 
 		$list = array();
 		foreach($admins AS $admin) {
-			$list[$admin->username] = $admin->username;
+			$list[$admin->nickname] = $admin->nickname;
 		}
 
 		return $list;

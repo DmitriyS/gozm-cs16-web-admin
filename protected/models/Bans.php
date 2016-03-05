@@ -112,10 +112,10 @@ class Bans extends CActiveRecord
 		return array(
 			'bid'				=> 'Bid',
 			'player_ip'			=> 'IP игрока',
-			'player_id'			=> 'Steam  игрока',
+			'player_id'			=> 'STEAM игрока',
 			'player_nick'		=> 'Ник игрока',
 			'admin_ip'			=> 'IP админа',
-			'admin_id'			=> 'Steam ID админа',
+			'admin_id'			=> 'STEAM админа',
 			'admin_nick'		=> 'Ник админа',
 			'adminName'         => 'Админ',
 			'ban_type'			=> 'Тип бана',
