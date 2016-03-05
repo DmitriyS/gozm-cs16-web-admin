@@ -61,7 +61,7 @@ class Webadmins extends CActiveRecord
 	public static function checkAccess($access = NULL, $username = '') {
 
 		// Главному админу можно всё
-		if(Yii::app()->user->id == '1')
+		if(Webadmins::is_main_admin())
 			return TRUE;
 
 		// IP видно всем
@@ -149,6 +149,13 @@ class Webadmins extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public static function is_main_admin()
+    {
+        if(Yii::app()->user->id == '1')
+			return TRUE;
+        return FALSE;
+    }
 
 	// Перед проверкой
 	public function beforeValidate() {

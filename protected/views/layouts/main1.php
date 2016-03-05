@@ -88,7 +88,7 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<?php if(Yii::app()->user->id == '1'):?>
+						<?php if(Webadmins::is_main_admin()):?>
 						<li>
 							<?php echo CHtml::link(
 									'<i class="icon-globe"></i> Админцентр',
