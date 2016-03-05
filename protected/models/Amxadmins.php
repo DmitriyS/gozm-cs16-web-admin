@@ -130,13 +130,13 @@ class Amxadmins extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 			'pagination' => array(
-				'pageSize' =>  Yii::app()->config->bans_per_page,
+				'pageSize' => Yii::app()->config->bans_per_page,
 			),
 		));
 	}
 
 	public static function getList() {
-		$admins = self::model()->findAll();
+		$admins = self::model()->findAll('`is_active` = 1 AND `ashow` = 1');
 
 		$list = array();
 		foreach($admins AS $admin) {
