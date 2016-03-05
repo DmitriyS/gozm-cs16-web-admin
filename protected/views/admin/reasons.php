@@ -100,7 +100,10 @@ function clearmodal()
 	'enableSorting' => FALSE,
 	'columns'=>array(
 		'reason',
-		'static_bantime',
+		array(
+            'name'=>'static_bantime',
+            'value'=>'Prefs::date2word($data->static_bantime)',
+        ),
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'template' => '{update} {delete}',
