@@ -100,9 +100,9 @@ class Bans extends CActiveRecord
                 self::HAS_ONE,
                 'Amxadmins',
                 '',
-                'on' => '`admin`.`steamid` = `t`.`admin_nick` OR '
-                    . '`admin`.`steamid` = `t`.`admin_ip` OR '
-                    . '`admin`.`steamid` = `t`.`admin_id`'
+                'on' => '`admin`.`username` = `t`.`admin_nick` OR '
+                    . '`admin`.`username` = `t`.`admin_ip` OR '
+                    . '`admin`.`username` = `t`.`admin_id`'
             )
 		);
 	}
@@ -117,7 +117,6 @@ class Bans extends CActiveRecord
 			'admin_ip'			=> 'IP админа',
 			'admin_id'			=> 'STEAM админа',
 			'admin_nick'		=> 'Ник админа',
-			'adminName'         => 'Админ',
 			'ban_type'			=> 'Тип бана',
 			'ban_reason'		=> 'Причина',
 			'ban_created'		=> 'Дата',

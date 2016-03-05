@@ -352,7 +352,7 @@ class BansController extends Controller
 				Prefs::date2word($model->ban_length) . ($model->expired == 1 ? ' (истек)' : '')) . "');";
             $js .= "$('#bandetail-map').html('" .  $model->map_name . "');";
             $js .= "$('#bandetail-reason').html('" . CHtml::encode($model->ban_reason) . "');";
-			$js .= "$('#bandetail-admin').html('" . CHtml::encode($model->adminName) . "');";
+			$js .= "$('#bandetail-admin').html('" . CHtml::encode($model->admin_nick) . "');";
 			$js .= "$('#bandetail-server').html('" . CHtml::encode($model->server_name) . "');";
 			//$js .= "$('#bandetail-kicks').html('" . $model->ban_kicks . "');";
 			$js .= "$('#loading').hide();";
