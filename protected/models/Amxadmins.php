@@ -135,6 +135,17 @@ class Amxadmins extends CActiveRecord
 		));
 	}
 
+	public static function getList() {
+		$admins = self::model()->findAll();
+
+		$list = array();
+		foreach($admins AS $admin) {
+			$list[$admin->username] = $admin->username;
+		}
+
+		return $list;
+	}
+
 	public static function getFlags($adminlist = false)
 	{
 		if($adminlist)

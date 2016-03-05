@@ -33,6 +33,8 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 
 	<?php echo $form->textFieldRow($model,'ban_reason',array('maxlength'=>100)); ?>
 
+	<?php echo $form->dropDownListRow($model,'admin_nick', Amxadmins::getList(), array('maxlength'=>100)); ?>
+
 	<label for="Bans_ban_created" class="required">Дата бана</label>
 	<?php 
 		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
