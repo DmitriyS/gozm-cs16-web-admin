@@ -42,6 +42,7 @@ $("#Reasons").change(function(){
 	'enableAjaxValidation'=>TRUE,
 ));
 
+/*
 $self = FALSE;
 
 if(!$model->isNewRecord)
@@ -54,9 +55,10 @@ if(!$model->isNewRecord)
 		$self = true;
 	}
 }
+*/
 ?>
 
-<p class="note">Поля, отмеченные <span class="required">*</span> обязательны к заполнению.</p>
+<p class="note">Поля, отмеченные <span class="required">*</span>, обязательны к заполнению.</p>
 <fieldset>
 	<?php echo $form->errorSummary($model); ?>
 
@@ -67,18 +69,18 @@ if(!$model->isNewRecord)
 
 	<!--?php echo $form->dropDownListRow($model, 'ban_type', array('SI' => 'IP', 'S' => 'SteamID')); ?-->
 
-	<?php //echo $form->dropDownListRow($model, 'ban_reason', Reasons::getList()); ?>
+	<!--?php echo $form->dropDownListRow($model, 'ban_reason', Reasons::getList()); ?-->
 
 	<!--div class="control-group ">
-		<?php echo CHtml::label('Причина', 'Reasons', array('class' => 'control-label'));?>
+		<!--?php echo CHtml::label('Причина', 'Reasons', array('class' => 'control-label'));?>
 		<div class="controls">
-			<?php echo CHtml::dropDownList('Reasons', 'selfreason', Reasons::getList())?>
+			<!--?php echo CHtml::dropDownList('Reasons', 'selfreason', Reasons::getList())?>
 		</div>
 	</div-->
 
 	<?php echo $form->textFieldRow($model, 'ban_reason', array('size'=>32,'maxlength'=>32)); ?>
 
-	<?php echo $form->error($model,'ban_reason'); ?>
+	<!--?php echo $form->error($model,'ban_reason'); ?-->
 
 	<?php echo $form->dropDownListRow($model, 'ban_length', Bans::getBanLenght()); ?>
 </fieldset>
