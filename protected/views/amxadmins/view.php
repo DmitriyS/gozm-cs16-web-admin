@@ -38,9 +38,13 @@ $this->menu=array(
 		),
 		'access',
 		'icq',
+        array(
+			'name' => 'is_active',
+			'value' => $model->is_active ? 'Да' : 'Нет'
+		),
 		array(
 			'name' => 'ashow',
-			'value' => $model->ashow == 1 ? 'Да' : 'Нет'
+			'value' => $model->ashow ? 'Да' : 'Нет'
 		),
 		array(
 			'name' => 'created',

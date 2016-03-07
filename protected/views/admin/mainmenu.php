@@ -37,7 +37,7 @@ $this->widget('bootstrap.widgets.TbTabs', array(
 					<li><a href="' . Yii::app()->createUrl('/serverinfo/admin') . '" class="btn"'.($activebtn == 'servsettings' ? $disabled : '').'>Настройки</a></li>
 					<li><a href="' . Yii::app()->createUrl('/admin/reasons') . '" class="btn"'.($activebtn == 'servreasons' ? $disabled : '').'>Причины банов</a></li>
 					<li><a href="' . Yii::app()->createUrl('/amxadmins/admin') . '" class="btn"'.($activebtn == 'servamxadmins' ? $disabled : '').'>Админы</a></li>
-					<li><a href="' . Yii::app()->createUrl('/amxadmins/adminsonservers') . '" class="btn"'.($activebtn == 'servadmassign' ? $disabled : '').'>Назначение админов</a></li>
+					<!--li><a href="' . Yii::app()->createUrl('/amxadmins/adminsonservers') . '" class="btn"'.($activebtn == 'servadmassign' ? $disabled : '').'>Назначение админов</a></li-->
 				</ul>',
 			'active' => $active == 'server'
 		),
