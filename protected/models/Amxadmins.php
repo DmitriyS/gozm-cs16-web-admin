@@ -125,7 +125,7 @@ class Amxadmins extends CActiveRecord
         $criteria->compare('last_seen',$this->last_seen);
 		$criteria->compare('expired',$this->expired);
 		$criteria->compare('days',$this->days);
-		//$criteria->order = 'nickname ASC';
+		$criteria->order = '`access` ASC, `id` ASC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
