@@ -144,6 +144,7 @@ class Webadmins extends CActiveRecord
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('last_action',$this->last_action);
 		$criteria->compare('try',$this->try);
+        $criteria->order = '`level` ASC, `id` ASC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

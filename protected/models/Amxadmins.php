@@ -64,9 +64,9 @@ class Amxadmins extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('nickname', 'required'),
+			array('nickname, icq', 'required'),
 			array('accessflags, addtake, servers', 'safe'),
-			array('ashow, days, change', 'numerical', 'integerOnly'=>true),
+			array('ashow, is_active, days, change', 'numerical', 'integerOnly'=>true),
 			array('username, access, flags, steamid, nickname', 'length', 'max'=>32),
 			array('password, icq', 'length', 'max'=>50),
 			array('id, username, password, access, flags, steamid, nickname, icq, ashow, created, last_seen, expired, days', 'safe',  'on'=>'search'),
@@ -97,6 +97,7 @@ class Amxadmins extends CActiveRecord
 			'nickname' => 'Имя',
 			'icq' => 'Контакты',
 			'ashow' => 'Показывать в списке админов',
+            'is_active' => 'Активирован на сервере',
 			'created' => 'Дата добавления',
             'last_seen' => 'Последний визит',
 			'expired' => 'Истекает',
@@ -121,6 +122,7 @@ class Amxadmins extends CActiveRecord
 		$criteria->compare('nickname',$this->nickname,true);
 		$criteria->compare('icq',$this->icq,true);
 		$criteria->compare('ashow',$this->ashow);
+        $criteria->compare('is_active',$this->ashow);
 		$criteria->compare('created',$this->created);
         $criteria->compare('last_seen',$this->last_seen);
 		$criteria->compare('expired',$this->expired);

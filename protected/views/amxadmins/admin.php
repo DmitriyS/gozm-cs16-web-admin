@@ -50,6 +50,14 @@ $this->menu=array(
 			'name' => 'flags',
 			'value' => 'Amxadmins::getAuthType($data->flags)',
 		),
+        array(
+			'name' => 'is_active',
+			'value' => '$data->is_active ? "Да" : "Нет"',
+		),
+        array(
+			'name' => 'ashow',
+			'value' => '$data->ashow ? "Да" : "Нет"',
+		),
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),
