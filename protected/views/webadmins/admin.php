@@ -34,7 +34,6 @@ $this->renderPartial('/admin/mainmenu', array('active' =>'site', 'activebtn' => 
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
 		'username',
 		'email',
 		'level',

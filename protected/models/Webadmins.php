@@ -167,14 +167,14 @@ class Webadmins extends CActiveRecord
 			$oldRecord = Webadmins::model()->findByPk($this->id);
 
 			if($this->password && $oldRecord->password !== $this->password) {
-				//$this->password = md5($this->password);
+				$this->password = md5($this->password);
 			}
 			else
 				$this->password = $oldRecord->password;
 
 		}
 		else {
-			//$this->password = md5($this->password);
+			$this->password = md5($this->password);
 		}
 		return TRUE;
 	}

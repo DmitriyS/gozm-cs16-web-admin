@@ -33,7 +33,6 @@ $this->renderPartial('/admin/mainmenu', array('active' =>'site', 'activebtn' => 
 <?php $this->widget('bootstrap.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
 		'username',
 		'level',
 		'email',
