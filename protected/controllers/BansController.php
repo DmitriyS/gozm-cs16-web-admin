@@ -34,21 +34,37 @@ class BansController extends Controller
 
 	public function actionUnban($id)
 	{
-		$model = $this->loadModel($id);
+        $ban_model = $this->loadModel($id);
 
-		// Проверка прав
-		if (!Webadmins::checkAccess('bans_unban', $model->admin_nick)) {
+		if (!Webadmins::checkAccess('bans_unban', $ban_model->admin_nick)) {
             throw new CHttpException(403, "У Вас недостаточно прав");
         }
 
-        $model->ban_length = '-1';
-		$model->expired = 1;
+        $history_model = new History;
+        $history_model->unsetAttributes();
+        $history_model->player_ip = $ban_model->player_ip;
+        $history_model->player_id = $ban_model->player_id;
+        $history_model->player_nick = $ban_model->player_nick;
+        $history_model->admin_ip = $ban_model->admin_ip;
+        $history_model->admin_id = $ban_model->admin_id;
+        $history_model->admin_nick = $ban_model->admin_nick;
+        $history_model->ban_type = $ban_model->ban_type;
+        $history_model->ban_reason = $ban_model->ban_reason;
+        $history_model->ban_created = $ban_model->ban_created;
+        $history_model->ban_length = $ban_model->ban_length;
+        $history_model->server_ip = $ban_model->server_ip;
+        $history_model->server_name = $ban_model->server_name;
+        $history_model->unban_created = time();
+        $history_model->unban_reason = 'Разбанен с сайта';
+        $history_model->unban_admin_nick = Yii::app()->user->name;
 
-		if ($model->save(FALSE)) {
-            Yii::app()->end('Игрок разбанен');
+        if ($history_model->save()) {
+    		if ($ban_model->delete()) {
+                Yii::app()->end('Игрок разбанен');
+            }
         }
 
-        Yii::app ()->end(CHtml::errorSummary($model));
+        Yii::app ()->end(CHtml::errorSummary($ban_model));
 	}
 
 	/**
