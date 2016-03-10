@@ -179,7 +179,8 @@ class AdminController extends Controller
 						->select()
 						->from("{{bans}}")
 						//->leftJoin("{{serverinfo}} se", "ba.server_ip=se.address")
-						->where("ban_created + ban_length*60 < UNIX_TIMESTAMP() AND ban_length != 0")
+						->where("ban_created + ban_length*60 < UNIX_TIMESTAMP()")
+						->andWhere("ban_length != 0")
 						->queryAll(true);
 
 				$prunecount=0;

@@ -161,7 +161,7 @@ $sysprefs = Prefs::sysprefs();
 				</tr>
 				<tr class="odd">
 					<td>
-						<input type="button" class="btn btn-small btn-info bdaction span12" id="clear_banlist" value="Очистить список банов">
+						<input type="button" class="btn btn-small btn-info bdaction span12" id="clear_banlist" value="Очистить истекшие баны">
 					</td>
 				</tr>
 				<tr class="odd">
