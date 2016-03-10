@@ -58,7 +58,7 @@ class Bans extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('player_nick', 'required'),
+			//array('player_nick', 'required'),
 			array('ban_length, imported', 'numerical', 'integerOnly'=>true),
 			array('player_ip', 'match', 'pattern' => '/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/'),
 			array('player_id', 'match', 'pattern' => '/^(STEAM|VALVE)_([0-9]):([0-9]):\d{1,21}$/'),
@@ -111,18 +111,18 @@ class Bans extends CActiveRecord
 	{
 		return array(
 			'bid'				=> 'Bid',
-			'player_ip'			=> 'IP игрока',
-			'player_id'			=> 'STEAM игрока',
-			'player_nick'		=> 'Ник игрока',
+			'player_ip'			=> 'IP',
+			'player_id'			=> 'STEAM',
+			'player_nick'		=> 'Ник',
 			'admin_ip'			=> 'IP админа',
 			'admin_id'			=> 'STEAM админа',
-			'admin_nick'		=> 'Ник админа',
-			'ban_type'			=> 'Тип бана',
+			'admin_nick'		=> 'Вип/Админ',
+			'ban_type'			=> 'Тип',
 			'ban_reason'		=> 'Причина',
 			'ban_created'		=> 'Дата',
-			'ban_length'		=> 'Срок бана',
+			'ban_length'		=> 'Срок',
 			'server_ip'			=> 'IP сервера',
-			'server_name'		=> 'Название сервера',
+			'server_name'		=> 'Сервер',
             'map_name'          => 'Карта',
 			'ban_kicks'			=> 'Кики',
 			'expired'			=> 'Истек',

@@ -85,12 +85,12 @@ $this->widget('bootstrap.widgets.TbGridView', array(
     'columns'=>array(
 
 		array(
-			'header' => 'Дата',
+			'name' => 'ban_created',
 			'value'=>'date("d.m.Y", $data->ban_created)',
 			'htmlOptions' => array('style' => 'width:70px'),
 		),
 		array(
-			'header' => 'Ник',
+			'name' => 'player_nick',
 			'type' => 'raw',
 			'value' => '$data->country . " " . CHtml::encode(mb_substr($data->player_nick, 0, 18, "UTF-8"))',
 			'htmlOptions' => array(
@@ -98,41 +98,41 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 			)
 		),
 		array(
-			'header' => 'Карта',
+			'name' => 'map_name',
 			'value' => '$data->map_name',
 		),
 		array(
-			'header' => 'Админ',
+			'name' => 'admin_nick',
 			'value' => '$data->admin_nick',
 		),
 
 		array(
-			'header' => 'Причина',
+			'name' => 'ban_reason',
 			'value' => 'mb_strlen($data->ban_reason, "UTF-8") > 25 ? mb_substr($data->ban_reason, 0, 25, "UTF-8") . "..." : $data->ban_reason'
 		),
 
 		array(
-			'header' => 'Срок',
+			'name' => 'ban_length',
 			'value' => '$data->ban_length == \'-1\' ? \'Разбанен\' : Prefs::date2word($data->ban_length) . ($data->expired == 1 ? \' (истек)\' : \'\')',
 			'htmlOptions' => array('style' => 'width:130px'),
 		),
 
 		array(
-			'header' => 'Комментарии',
+			'name' => 'commentsCount',
 			'value'=>'$data->commentsCount',
 			'htmlOptions' => array('style'=>'text-align: center'),
 			'visible' => Yii::app()->config->show_comment_count,
 		),
 
 		array(
-			'header' => 'Файлы',
+			'name' => 'filesCount',
 			'value'=>'$data->filesCount',
 			'htmlOptions' => array('style'=>'text-align: center'),
 			'visible' => Yii::app()->config->show_demo_count,
 		),
 
 		array(
-			'header' => 'Кики',
+			'name' => 'ban_kicks',
 			'value' => '$data->ban_kicks',
 			'htmlOptions' => array('style'=>'text-align: center'),
 			'visible' => Yii::app()->config->show_kick_count,
