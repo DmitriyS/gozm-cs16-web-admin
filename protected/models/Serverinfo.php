@@ -63,7 +63,7 @@ class Serverinfo extends CActiveRecord
             ),
         );
     }
-	
+
 	public function rules()
 	{
 		return array(
@@ -123,38 +123,29 @@ class Serverinfo extends CActiveRecord
 
 	public function getInfo() {
 		$sip = explode(':',  $this->address);
-		
-		//include ROOTPATH . '/include/GameQ.php';
-		
-		$server = new GameQ;
-		
-		$server->addServer(array(
-			'id' => $this->id,
-			'type' => $this->gametype,
-			'host' => $this->address
-		));
-		
-		$server->setOption('timeout', 1);
-		
-		$s = $server->requestData();
-		$s = $s[$this->id];
+		include_once ROOTPATH . '/include/lgsl_query.php';
+		$server = query_live('halflife', $sip[0], $sip[1], $sip[1], '0', 'spet');
 
+		$fields_show  = array("name", "score", "time");
+		$fields_hide  = array("teamindex", "pid", "pbguid");
+		$fields = lgsl_sort_fields($server, $fields_show, $fields_hide, FALSE);
+		$server = lgsl_sort_players($server);
 		$rules = array();
-		$info['online'] = $s['gq_online'] == 1;
-		
+		$info['online'] = $server['b']['status'];
+
 		if($info['online'])
 		{
-			$info['players'] = $s['num_players'];
-			$info['playersmax'] = $s['max_players'];
-			$info['name'] = $s['hostname'];
-			$info['map'] = $s['map'];
-			$info['game'] = $s['game_dir'];
-			$info['os'] = $s['os'] == 'l' ? 'Linux' : 'Windows';
-			$info['secure'] = $s['secure'] == 0 ? FALSE : TRUE;
-			$info['playersinfo'] = isset($s['players']) && is_array($s['players']) ? $s['players'] : array();
-			$info['timeleft'] = isset($s['mp_timeleft']) ? $s['mp_timeleft'] : isset($s['amx_timeleft'])?$s['amx_timeleft']:false;
-			$info['nextmap'] = isset($s['amx_nextmap'])?$s['amx_nextmap']:FALSE;
-			$info['contact'] = isset($s['sv_contact'])?$s['sv_contact']:FALSE;
+			$info['players'] = $server['s']['players'];
+			$info['playersmax'] = $server['s']['playersmax'];
+			$info['name'] = $server['s']['name'];
+			$info['map'] = $server['s']['map'];
+			$info['game'] = $server['s']['game'];
+			$info['os'] = $server['e']['os'] == 'l' ? 'Linux' : 'Windows';
+			$info['secure'] = $server['e']['anticheat'] == 0 ? FALSE : TRUE;
+			$info['playersinfo'] = is_array($server['p']) ? $server['p'] : array();
+			$info['timeleft'] = isset($server['e']['amx_timeleft'])?$server['e']['amx_timeleft']:false;
+			$info['nextmap'] = isset($server['e']['amx_nextmap'])?$server['e']['amx_nextmap']:FALSE;
+			$info['contact'] = isset($server['e']['sv_contact'])?$server['e']['sv_contact']:FALSE;
 			$game = $this->gametype ? $this->gametype : $info['game'];
 			$info['modimg'] = Yii::app()->urlManager->baseUrl .
 					DIRECTORY_SEPARATOR .
@@ -188,7 +179,7 @@ class Serverinfo extends CActiveRecord
 			}
 			else
 			{
-				$mapimage = Yii::app()->urlManager->baseUrl . "/images/maps/noimage.jpg";
+				$mapimage = Yii::app()->urlManager->baseUrl . "/images/maps/" . $game . "/noimage.jpg";
 			}
 
 			$info['mapimg'] = CHtml::image($mapimage, $info['map'], array('title' => $info['map'], 'class' => 'img-polaroid'));
@@ -196,7 +187,7 @@ class Serverinfo extends CActiveRecord
 		}
 		return FALSE;
 	}
-	
+
 	public function rconCommand($command)
 	{
 		$addr = explode(':', $this->address);
