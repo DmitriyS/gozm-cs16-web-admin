@@ -52,7 +52,7 @@ class Players extends CActiveRecord
             'best_human'        => 'Лучший человек',
 			'best_player'		=> 'Лучший игрок карты',
 			'escape_hero'		=> 'Герой эскейпа',
-            'rank'              => 'Ранк',
+            'rank'              => 'Место',
             'skill'             => 'Скилл',
 		);
 	}
@@ -86,7 +86,7 @@ class Players extends CActiveRecord
         $criteria->compare('rank',$this->rank);
         $criteria->compare('skill',$this->skill);
 
-		$criteria->order = '`id` DESC';
+		$criteria->order = '`skill` DESC, `id` DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
