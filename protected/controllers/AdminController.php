@@ -157,6 +157,17 @@ class AdminController extends Controller
 				Yii::app()->db->createCommand()->truncateTable('{{bans}}');
 				Yii::app()->end("$('#loading').hide();alert('Таблица банов успешно очищена');");
 
+			case 'load_dump':
+				$file = __DIR__ . '/../data/gozm_gozm.sql';
+				if (!file_exists($file))
+				{
+					Yii::app()->end("$('#loading').hide();alert('Файл SQL не найден!');");
+				}
+
+				$sql = file_get_contents($file);
+				Yii::app()->db->createCommand($sql)->query();
+				Yii::app()->end("$('#loading').hide();alert('База успешно восстановлена!');");
+
 			case 'clear_cache':
 				$dir = ROOTPATH."/assets";
 				self::removeDirRec($dir);
@@ -219,9 +230,6 @@ class AdminController extends Controller
 
 					$prunecount++;
 				}
-
-				Yii::app()->db->createCommand()
-					->delete("superban", "unbantime < :now", array(':now'=>time()));
 
 				Yii::app()->db->createCommand()
 					->insert("{{logs}}",

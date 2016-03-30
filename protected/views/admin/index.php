@@ -169,6 +169,11 @@ $sysprefs = Prefs::sysprefs();
 						<input type="button" class="btn btn-small btn-info bdaction span12" id="optimize_database" value="Оптимизация базы">
 					</td>
 				</tr>
+				<tr class="odd">
+					<td>
+						<input type="button" class="btn btn-small btn-info bdaction span12" id="load_dump" value="Восстановление базы">
+					</td>
+				</tr>
 			</tbody>
 		</table>
     </div>
