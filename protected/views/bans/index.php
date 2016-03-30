@@ -50,7 +50,8 @@ $('.search-form form').submit(function(){
 	$ip = $_SERVER['REMOTE_ADDR'];
 	echo $check
 			?
-		'<strong>Внимание!</strong> Ваш IP (<strong>'.$ip.'</strong>) забанен'
+		'<strong>Внимание!</strong> Ваш IP (<strong>'.$ip.'</strong>) забанен. Разбан: '.
+		CHtml::link('vk.com/go_zombie', 'http://vk.com/go_zombie', array('target' => '_blank'))
 			:
 		'Ваш IP (<strong>'.$ip.'</strong>) не забанен'
 	?>

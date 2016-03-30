@@ -142,7 +142,7 @@ class Bans extends CActiveRecord
     }
 
 	public function getUnbanned() {
-		return $this->ban_length == '-1' || $this->expired == 1 || ($this->ban_length && ($this->ban_created + ($this->ban_length * 60)) < time());
+		return $this->ban_length == '-1' || ($this->ban_length && ($this->ban_created + ($this->ban_length * 60)) < time());
 	}
 
 	protected function afterFind() {
@@ -160,11 +160,10 @@ class Bans extends CActiveRecord
 			$this->ban_created = time();
 		} else {
 			if($this->getUnbanned()) {
-				$this->expired = time() + $this->ban_length * 60;
+				$this->expired = 1;
 			} else {
-				 $oldban = self::model()->findByPk($this->bid);
-				 $this->expired = $oldban->expired + $this->ban_length * 60;
-			 }
+				$this->expired = 0;
+			}
 		}
 		return parent::beforeSave();
 	}
