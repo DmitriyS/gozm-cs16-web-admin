@@ -52,7 +52,7 @@ class Usermenu extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'pos' => 'Позиция',
+			'pos' => 'Слот',
 			'activ' => 'Активность',
 			'lang_key' => 'Имя для гостей',
 			'url' => 'URL для гостей',
@@ -98,7 +98,10 @@ class Usermenu extends CActiveRecord
 		}
 
 		// Получаем модель
-		$model = self::model()->findAll('`activ` = 1');
+		$model = self::model()->findAll(array(
+			'order'=>'`pos` ASC',
+			'condition'=>'`activ` = 1',
+		));
 
 		// Гость?
 		$guest = Yii::app()->user->isGuest;
