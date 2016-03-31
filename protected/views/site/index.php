@@ -110,15 +110,15 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 			'columns'=>array(
 				array(
 					'name'=>'rank',
-					'value' => '$data->rank'
+					'value' => '$data->rank',
 				),
 				array(
 					'name'=>'nick',
-					'value' => '$data->nick'
+					'value' => '$data->nick',
 				),
 				array(
 					'name'=>'skill',
-					'value' => 'round($data->skill * 1000)'
+					'value' => 'round($data->skill * 1000)',
 				),
 			),
 		));

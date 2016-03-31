@@ -26,8 +26,8 @@ class PlayersController extends Controller
             ),
             'pagination' => array(
                 'pageSize' =>  Yii::app()->config->bans_per_page,
-            ),)
-         );
+            ),
+        ));
 
         $model=new Players('search');
 		$model->unsetAttributes();
