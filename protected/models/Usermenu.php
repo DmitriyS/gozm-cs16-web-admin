@@ -113,7 +113,7 @@ class Usermenu extends CActiveRecord
 		$match = array(
 			'_HOME' => 'Главная',
 			'_BANLIST' => 'Банлист',
-			'_SERVER' => 'Серверы',
+			'_SERVER' => 'Сервер',
 			'_ADMLIST' => 'Админы',
             '_PLAYERLIST' => 'Игроки',
 			'_MAPLIST' => 'Карты',

@@ -56,10 +56,10 @@ class ServerinfoController extends Controller
 	 */
 	public function actionGetinfo()
 	{
-		
+
 		$id = filter_input(INPUT_POST, 'server');
 		$server = $this->loadModel($id);
-		
+
 		if($server === NULL)
 			Yii::app()->end();
 
@@ -201,7 +201,7 @@ class ServerinfoController extends Controller
 	 */
 	public function actionIndex()
 	{
-
+		/*
 		$model=new Serverinfo('search');
 		$model->unsetAttributes();
 		if(isset($_GET['Serverinfo']))
@@ -222,6 +222,9 @@ class ServerinfoController extends Controller
 				'serversCount' => Serverinfo::model()->cache(600)->count()
 			)
 		));
+		*/
+		$server = Serverinfo::model()->cache(600)->find();
+		$this->actionView($server->id);
 	}
 
 	/**
@@ -257,7 +260,7 @@ class ServerinfoController extends Controller
 	public function actionServerdetail()
 	{
 		$model = Serverinfo::model()->findByPk($_POST['sid']);
-		
+
 		$info = $model->getInfo();
 
 		$players = "";

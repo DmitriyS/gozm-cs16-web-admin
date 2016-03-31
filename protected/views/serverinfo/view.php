@@ -17,8 +17,9 @@ $info = $server->getInfo();
 $this->pageTitle = Yii::app()->name .' :: Сервер ' . $info['name'];
 
 $this->breadcrumbs=array(
-	'Серверы'=>array('index'),
-	$info['name'],
+	//'Серверы'=>array('index'),
+	//$info['name'],
+	'Сервер',
 );
 
 // Если страницу запрашивает аякс, то не отдаем ему жабаскрипт совсем
@@ -114,7 +115,7 @@ endif;
 
 <div id="container">
 	<?php if($info): ?>
-	<h2>Детали сервера &laquo;<?php echo $info['name']; ?>&raquo;</h2>
+	<h2>&laquo;<?php echo $info['name']; ?>&raquo;</h2>
 	<?php if(!Yii::app()->user->isGuest): ?>
 	<p class="text-success">
 		<i class="icon-exclamation-sign"></i>
