@@ -290,13 +290,7 @@ class AmxadminsController extends Controller
 				$wa->unsetAttributes();
 				$wa->username = $_POST['Amxadmins']['nickname'];
 				$wa->password = $_POST['Amxadmins']['password'];
-
-				if ($model->access == Amxadmins::FLAG_PLAYER)
-					$wa->level = 4;
-				else if ($model->access == Amxadmins::FLAG_VIP)
-					$wa->level = 3;
-				else
-					$wa->level = 2;
+				$wa->level = $this->determineWebadminLevel($model->access);
 
 				$wa->save();
 			}
@@ -326,6 +320,16 @@ class AmxadminsController extends Controller
 
 		if(isset($_POST['Amxadmins']))
 		{
+			if ($model->access != $_POST['Amxadmins']['access'])
+			{
+				$wa_model = Webadmins::model()->find('`username` = :nick', array(':nick' => $_POST['Amxadmins']['nickname']));
+				if ($wa_model !== null)
+				{
+					$wa_model->level = $this->determineWebadminLevel($_POST['Amxadmins']['access']);
+					$wa_model->save();
+				}
+			}
+
 			$model->attributes=$_POST['Amxadmins'];
 			if($model->save())
 				$this->redirect(array('admin'));
@@ -345,7 +349,14 @@ class AmxadminsController extends Controller
 		if(!Webadmins::checkAccess('amxadmins_edit'))
 			throw new CHttpException(403, "У Вас недостаточно прав");
 
-		$this->loadModel($id)->delete();
+		$model=$this->loadModel($id);
+		$model->delete();
+
+		$wa_model = Webadmins::model()->find('`username` = :nick', array(':nick' => $model->nickname));
+		if ($wa_model !== null)
+		{
+			$wa_model->delete();
+		}
 
 		// Если не аякс запрос, то перенаправляем
 		if(!isset($_GET['ajax']))
@@ -396,6 +407,16 @@ class AmxadminsController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	public function determineWebadminLevel($flags)
+	{
+		if ($flags == Amxadmins::FLAG_PLAYER)
+			return 4;
+		else if ($flags == Amxadmins::FLAG_VIP)
+			return 3;
+		else
+			return 2;
 	}
 
 	/**
