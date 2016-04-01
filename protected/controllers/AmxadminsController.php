@@ -284,10 +284,10 @@ class AmxadminsController extends Controller
 		{
 			$model->attributes=$_POST['Amxadmins'];
 
-			if(isset($_POST['Webadmins']) && $model->validate())
+			if($model->validate())
 			{
 				$wa = new Webadmins;
-				$wa->attributes = $_POST['Webadmins'];
+				$wa->unsetAttributes();
 				$wa->username = $_POST['Amxadmins']['nickname'];
 				$wa->password = $_POST['Amxadmins']['password'];
 				$wa->save();

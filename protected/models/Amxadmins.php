@@ -31,6 +31,8 @@ class Amxadmins extends CActiveRecord
 	public $change;
 	public $addtake = null;
 	//public $servers;
+    const FLAG_VIP = 't';
+    const FLAG_PLAYER = 'z';
 
 	public static function model($className=__CLASS__)
 	{
@@ -43,12 +45,13 @@ class Amxadmins extends CActiveRecord
 	}
 
 
-	public function getAccessflags() {
-
+	public function getAccessflags()
+    {
 		return str_split($this->access);
 	}
 
-	public function setAccessflags($value) {
+	public function setAccessflags($value)
+    {
 		//return false;
 	}
 
@@ -276,12 +279,12 @@ class Amxadmins extends CActiveRecord
             $this->addError('password', 'Для админки по нику нужно обязательно указывать пароль');
         }
 
-		if ($this->flags === 'd' && !filter_var($this->steamid, FILTER_VALIDATE_IP, array('flags' => FILTER_FLAG_IPV4))) {
-            $this->addError('steamid', 'Неверно введен IP');
+		if ($this->flags === 'd' && !Prefs::validate_value($this->username, 'ip')) {
+            $this->addError('username', 'Неверно введен IP');
         }
 
-        if ($this->flags === 'c' && !Prefs::validate_value($this->steamid, 'steamid')) {
-            $this->addError('steamid', 'Неверно введен SteamID');
+        if ($this->flags === 'c' && !Prefs::validate_value($this->username, 'steamid')) {
+            $this->addError('username', 'Неверно введен SteamID');
         }
 
 /*
@@ -341,18 +344,21 @@ class Amxadmins extends CActiveRecord
 
     public static function getRole($flags)
     {
-        if ($flags == 't') {
+        if ($flags == Amxadmins::FLAG_VIP)
+        {
             return 'VIP';
-        } elseif (strpos($flags, 'z') !== false) {
-            return 'UNKNOWN';
         }
-        else {
+        elseif ($flags == Amxadmins::FLAG_PLAYER)
+        {
+            return 'PLAYER';
+        }
+        else
+        {
             return 'ADMIN';
         }
     }
 
 	public function afterSave() {
-
 		if(!empty($this->servers) && $this->isNewRecord) {
 			foreach($this->servers as $is) {
 				$inservers = new AdminsServers;
