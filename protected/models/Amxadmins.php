@@ -223,7 +223,8 @@ class Amxadmins extends CActiveRecord
             $this->password = '';
         }
 
-		if($this->isNewRecord) {
+		if($this->isNewRecord)
+        {
 			$this->created = time();
             if($this->password && $this->scenario != 'buy') {
                 //$this->password = md5($this->password);
@@ -232,7 +233,9 @@ class Amxadmins extends CActiveRecord
                 $this->flags .= 'e';
             }
 			$this->expired = $this->days != 0 ? ($this->days * 86400) + time() : 0;
-		} else {
+		}
+        else
+        {
 			if ($this->password) {
                 //$this->password = md5($this->password);
             } else {

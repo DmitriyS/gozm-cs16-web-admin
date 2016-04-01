@@ -290,6 +290,14 @@ class AmxadminsController extends Controller
 				$wa->unsetAttributes();
 				$wa->username = $_POST['Amxadmins']['nickname'];
 				$wa->password = $_POST['Amxadmins']['password'];
+
+				if ($model->access == Amxadmins::FLAG_PLAYER)
+					$wa->level = 4;
+				else if ($model->access == Amxadmins::FLAG_VIP)
+					$wa->level = 3;
+				else
+					$wa->level = 2;
+
 				$wa->save();
 			}
 
