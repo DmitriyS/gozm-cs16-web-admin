@@ -114,7 +114,7 @@ class Usermenu extends CActiveRecord
 			'_HOME' => 'Главная',
 			'_BANLIST' => 'Банлист',
 			'_SERVER' => 'Сервер',
-			'_ADMLIST' => 'Админы',
+			'_ADMLIST' => 'Випы/Админы',
             '_PLAYERLIST' => 'Игроки',
 			'_MAPLIST' => 'Карты',
 			'_SEARCH' => 'Поиск',
