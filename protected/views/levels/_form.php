@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Форма добавления/редактирования уровней админов
  */
@@ -22,6 +22,8 @@ $array2 = Levels::getValues(TRUE);
 ?>
 
 	<?php echo $form->errorSummary($model); ?>
+
+	<?php echo $form->textFieldRow($model,'description', $array,array('class'=>'span5','maxlength'=>128)); ?>
 
 	<?php echo $form->dropDownListRow($model,'bans_add', $array,array('class'=>'span5','maxlength'=>3)); ?>
 

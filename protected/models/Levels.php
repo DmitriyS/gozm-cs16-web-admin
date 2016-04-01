@@ -47,7 +47,7 @@ class Levels extends CActiveRecord
 		return array(
 			array('level', 'numerical', 'integerOnly'=>true),
 			array('bans_add, bans_edit, bans_delete, bans_unban, bans_import, bans_export, amxadmins_view, amxadmins_edit, webadmins_view, webadmins_edit, websettings_view, websettings_edit, permissions_edit, prune_db, servers_edit, ip_view', 'in', 'range' => array('yes', 'no', 'own')),
-			array('level, bans_add, bans_edit, bans_delete, bans_unban, bans_import, bans_export, amxadmins_view, amxadmins_edit, webadmins_view, webadmins_edit, websettings_view, websettings_edit, permissions_edit, prune_db, servers_edit, ip_view', 'safe', 'on'=>'search'),
+			array('level, description, bans_add, bans_edit, bans_delete, bans_unban, bans_import, bans_export, amxadmins_view, amxadmins_edit, webadmins_view, webadmins_edit, websettings_view, websettings_edit, permissions_edit, prune_db, servers_edit, ip_view', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,6 +61,7 @@ class Levels extends CActiveRecord
 	{
 		return array(
 			'level' => 'Уровень',
+			'description' => 'Описание',
 			'bans_add' => 'Добавить бан',
 			'bans_edit' => 'Изменять бан',
 			'bans_delete' => 'Удалять бан',
@@ -85,6 +86,7 @@ class Levels extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('level',$this->level);
+		$criteria->compare('description',$this->description,true);
 		$criteria->compare('bans_add',$this->bans_add,true);
 		$criteria->compare('bans_edit',$this->bans_edit,true);
 		$criteria->compare('bans_delete',$this->bans_delete,true);

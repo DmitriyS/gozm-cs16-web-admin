@@ -33,7 +33,7 @@ $this->renderPartial('/admin/mainmenu', array('active' =>'site', 'activebtn' => 
 	'enableSorting' => FALSE,
 	'columns'=>array(
 		'level',
-
+		'description',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'template' => '{update} {delete}'
