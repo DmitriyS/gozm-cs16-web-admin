@@ -46,6 +46,7 @@ class Levels extends CActiveRecord
 	{
 		return array(
 			array('level', 'numerical', 'integerOnly'=>true),
+			array('description', 'length', 'max'=>128),
 			array('bans_add, bans_edit, bans_delete, bans_unban, bans_import, bans_export, amxadmins_view, amxadmins_edit, webadmins_view, webadmins_edit, websettings_view, websettings_edit, permissions_edit, prune_db, servers_edit, ip_view', 'in', 'range' => array('yes', 'no', 'own')),
 			array('level, description, bans_add, bans_edit, bans_delete, bans_unban, bans_import, bans_export, amxadmins_view, amxadmins_edit, webadmins_view, webadmins_edit, websettings_view, websettings_edit, permissions_edit, prune_db, servers_edit, ip_view', 'safe', 'on'=>'search'),
 		);
