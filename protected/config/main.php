@@ -50,7 +50,7 @@ define('MODULES_MATCHES', implode('|', array_keys($modules)));
 // Главные параметры приложения
 return array(
 	'basePath'=>ROOTPATH . DIRECTORY_SEPARATOR . 'protected',
-	'name'=>'GoZombie Bans',
+	'name'=>'GoZombie Web',
 	'sourceLanguage' => 'ru',
 	'language'=>'ru',
 
