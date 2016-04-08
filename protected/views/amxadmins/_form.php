@@ -256,14 +256,13 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	if($model->isNewRecord):?>
 		<!--hr class="row-divider">
 		<button class="btn btn-info" type="button" onclick="$('#webrights').slideToggle('slow');">Добавить WEB админа</button>
-		<div id="webrights" style="display: none"><br>
-			<?php echo $form->textFieldRow($webadmins,'username',array('class' => 'span6','size'=>32,'maxlength'=>32, 'value' => 'Будет использован ник Amx админа', 'disabled' => 'disabled'));?>
-			<?php echo $form->textFieldRow($webadmins,'password',array('class' => 'span6','size'=>32,'maxlength'=>32, 'value' => 'Будет использован пароль Amx админа', 'disabled' => 'disabled'));?>
-			<?php echo $form->textFieldRow($webadmins,'email',array('class' => 'span6','size'=>60,'maxlength'=>64)); ?>
-			<?php echo $form->dropdownListRow($webadmins,'level', Levels::getList(),
-				array('class' => 'span6', 'options' => array(end(Levels::getList()) => array('selected'=>true)))); ?>
-
-		</div-->
+		<div id="webrights" style="display: none"><br-->
+			<!--?php echo $form->textFieldRow($webadmins,'username',array('class' => 'span6','size'=>32,'maxlength'=>32, 'value' => 'Будет использован ник Amx админа', 'disabled' => 'disabled'));?-->
+			<!--?php echo $form->textFieldRow($webadmins,'password',array('class' => 'span6','size'=>32,'maxlength'=>32, 'value' => 'Будет использован пароль Amx админа', 'disabled' => 'disabled'));?-->
+			<!--?php echo $form->textFieldRow($webadmins,'email',array('class' => 'span6','size'=>60,'maxlength'=>64)); ?-->
+			<!--?php echo $form->dropdownListRow($webadmins,'level', Levels::getList(),
+				array('class' => 'span6', 'options' => array(end(Levels::getList()) => array('selected'=>true)))); ?-->
+		<!--/div-->
 	<?php endif;?>
 
 
