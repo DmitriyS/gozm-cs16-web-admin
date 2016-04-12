@@ -6,8 +6,7 @@ class PlayersController extends Controller
 
     public function filters()
     {
-        return array(
-        );
+        return array();
     }
 
     public function actions(){
@@ -22,7 +21,8 @@ class PlayersController extends Controller
     {
         $dataProvider=new CActiveDataProvider('Players', array(
             'criteria'=>array(
-                'order' => '`id` ASC',
+                'select' => '`id`, `rank`, `nick`, `skill`, `steam_id`, `last_seen`',
+                'order' => '`skill` DESC, `id` ASC',
             ),
             'pagination' => array(
                 'pageSize' =>  Yii::app()->config->bans_per_page,
@@ -40,6 +40,39 @@ class PlayersController extends Controller
             'model'=>$model,
         ));
 
+    }
+
+	public function actionPlayerdetail()
+	{
+		if(is_numeric($_POST['id']))
+		{
+			$model = Players::model()->findByPk($_POST['id']);
+			if($model === null)
+			{
+				Yii::app()->end('alert("Ошибка!")');
+			}
+			$js = "$('#bandetail-nick').html('" .  CHtml::encode($model->nick) . "');";
+            $js .= "$('#bandetail-rank').html('" . $model->rank . "');";
+            $js .= "$('#bandetail-skill').html('" . $model->skill . "');";
+			$js .= "$('#bandetail-steam').html('" . $model->steam_id . "');";
+			$js .= "$('#bandetail-datetime').html('" . date('d.m.y - H:i:s',$model->last_seen) . "');";
+			$js .= "$('#loading').hide();";
+			$js .= "$('#viewban').attr({'href': '".Yii::app()->urlManager->createUrl('/players/view', array('id' => $_POST['id']))."'});";
+			$js .= "$('#BanDetail').modal('show');";
+			echo $js;
+		}
+		Yii::app()->end();
+	}
+
+
+    public function actionView($id)
+    {
+        $model=Players::model()->findByPk($id);
+
+        // Вывод всего на вьюху
+        $this->render('view', array(
+            'model'=>$model,
+        ));
     }
 
 }

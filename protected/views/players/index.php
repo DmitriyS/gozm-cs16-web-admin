@@ -4,9 +4,20 @@ $page = 'Игроки сервера';
 
 $this->pageTitle = Yii::app()->name . ' - ' . $page;
 
-$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-    'links'=>array($page),
-));
+$this->breadcrumbs=array(
+	$page,
+);
+
+Yii::app()->clientScript->registerScript('banlist', "
+$('.bantr').live('click', function(){
+	$('#loading').show();
+	var pid = this.id.substr(4);
+	$.post('".Yii::app()->createUrl('players/playerdetail/')."', {'id': pid}, function(data){
+		eval(data);
+	});
+})
+");
+
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -32,23 +43,42 @@ $('.search-form form').submit(function(){
 </div>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
-	'dataProvider'=>$dataProvider,
-	'type'=>'striped bordered condensed',
-	'id' => 'admins-grid',
+    'type'=>'striped bordered condensed',
+	'id'=>'bans-grid',
+    'dataProvider'=>isset($_GET['Players']) ? $model->search() : $dataProvider,
+	//'template' => '{items} {pager}',
 	'summaryText' => 'Показано с {start} по {end} игроков из {count}. Страница {page} из {pages}',
-	'enableSorting' => false,
+	'htmlOptions' => array(
+		'style' => 'width: 100%'
+	),
+    'rowHtmlOptionsExpression'=>'array(
+		"id" => "ban_$data->id",
+		"style" => "cursor:pointer;",
+		"class" => $data->id == 1 ? "bantr success" : "bantr"
+	)',
 	'pager' => array(
 		'class'=>'bootstrap.widgets.TbPager',
 		'displayFirstAndLast' => true,
 	),
 	'columns'=>array(
+        array(
+			'name' => 'rank',
+			'value' => '$data->rank',
+            //'value' => '$this->grid->dataProvider->pagination->offset + $row+1',
+		),
 		array(
 			'name' => 'nick',
 			'value' => '$data->nick',
 		),
+        /*
 		array(
 			'name' => 'ip',
 			'value' => '$data->ip',
+		),
+        */
+        array(
+			'name' => 'skill',
+			'value' => '$data->skill',
 		),
         array(
 			'name' => 'steam_id',
@@ -58,5 +88,88 @@ $('.search-form form').submit(function(){
 			'name' => 'last_seen',
 			'value' => 'date("d.m.Y", $data->last_seen)',
 		),
+        array(
+			'class'=>'bootstrap.widgets.TbButtonColumn',
+			'header' => '',
+			'template'=>'{view}',
+		),
 	),
 )); ?>
+
+<?php $this->beginWidget('bootstrap.widgets.TbModal',
+	array(
+		'id'=>'BanDetail',
+		'htmlOptions'=> array('style'=>' width: 600px; margin-left: -300px'),
+)); ?>
+
+<div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h4>Подробности игрока </h4>
+</div>
+
+<div class="modal-body" id="ban_name">
+<table class="items table table-bordered table-condensed" style="width:500px; margin: 0 auto">
+	<tr class="odd">
+		<td class="span3">
+			<b>Ник</b>
+		</td>
+		<td class="span6" id="bandetail-nick">
+		</td>
+	</tr>
+	<tr class="odd">
+		<td>
+			<b>Место</b>
+		</td>
+		<td id="bandetail-rank">
+		</td>
+	</tr>
+	<tr class="odd">
+		<td>
+			<b>Скилл</b>
+		</td>
+		<td id="bandetail-skill">
+		</td>
+	</tr>
+	<!--tr class="odd">
+		<td>
+			<b>IP адрес</b>
+		</td>
+		<td id="bandetail-ip">
+		</td>
+	</tr-->
+	<tr class="odd">
+		<td>
+			<b>Стим</b>
+		</td>
+		<td id="bandetail-steam">
+		</td>
+	</tr>
+	<tr class="odd">
+		<td>
+			<b>Был на сервере</b>
+		</td>
+		<td id="bandetail-datetime">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: center">
+			<?php $this->widget('bootstrap.widgets.TbButton', array(
+				'label'=>'Показать подробности',
+				'url'=> '#',
+				'htmlOptions'=>array('id' => 'viewban'),
+			)); ?>
+		</td>
+	</tr>
+</table>
+<br>
+
+</div>
+
+<div class="modal-footer">
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label'=>'Закрыть',
+        'url'=>'#',
+        'htmlOptions'=>array('data-dismiss'=>'modal'),
+    )); ?>
+</div>
+<?php $this->endWidget(); ?>

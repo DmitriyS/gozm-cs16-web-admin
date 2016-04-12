@@ -118,7 +118,7 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 				),
 				array(
 					'name'=>'skill',
-					'value' => 'round($data->skill * 1000)',
+					'value' => '$data->skill',
 				),
 			),
 		));

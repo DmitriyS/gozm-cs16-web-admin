@@ -44,18 +44,14 @@ class SiteController extends Controller
 		));
 
 		// Вытаскиваем 10 лучших игроков
-		/*
 		$dependecy = new CDbCacheDependency('SELECT MAX(`id`) FROM `bio_players`');
 		$players = new CActiveDataProvider(Players::model()->cache(300, $dependecy), array(
 			'criteria' => array(
-				'order' => 'id DESC',
+				'order' => '`skill` DESC, `id` ASC',
 				'limit' => 10,
 			),
 			'pagination' => false,
 		));
-		*/
-		$dependecy = Players::model()->findAllBySql(Players::rankedPlayersSQL());
-		$players = new CArrayDataProvider($dependecy);
 
 		$this->render('index',array(
 			'bans' => $bans,
