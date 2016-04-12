@@ -46,16 +46,18 @@ class PlayersController extends Controller
 	{
 		if(is_numeric($_POST['id']))
 		{
-			$model = Players::model()->findByPk($_POST['id']);
-			if($model === null)
+			$model = Players::model();
+            $count = $model->count();
+            $player = $model->findByPk($_POST['id']);
+			if($player === null)
 			{
 				Yii::app()->end('alert("Ошибка!")');
 			}
-			$js = "$('#playerdetail-nick').html('" .  CHtml::encode($model->nick) . "');";
-            $js .= "$('#playerdetail-rank').html('" . $model->rank . "');";
-            $js .= "$('#playerdetail-skill').html('" . $model->skill . "');";
-			$js .= "$('#playerdetail-steam').html('" . $model->steam_id . "');";
-			$js .= "$('#playerdetail-datetime').html('" . date('d.m.y - H:i:s',$model->last_seen) . "');";
+			$js = "$('#playerdetail-nick').html('" .  CHtml::encode($player->nick) . "');";
+            $js .= "$('#playerdetail-rank').html('" . $player->rank . " из " . $count . "');";
+            $js .= "$('#playerdetail-skill').html('" . $player->skill . "');";
+			$js .= "$('#playerdetail-steam').html('" . $player->steam_id . "');";
+			$js .= "$('#playerdetail-datetime').html('" . date('d.m.y - H:i:s',$player->last_seen) . "');";
 			$js .= "$('#loading').hide();";
 			$js .= "$('#viewplayer').attr({'href': '".Yii::app()->urlManager->createUrl('/players/view', array('id' => $_POST['id']))."'});";
 			$js .= "$('#PlayerDetail').modal('show');";
@@ -67,12 +69,14 @@ class PlayersController extends Controller
 
     public function actionView($id)
     {
-        $model=Players::model()->findByPk($id);
+        $model = Players::model();
+        $player = $model->findByPk($id);
+        $count = $model->count();
 
         // Вывод всего на вьюху
         $this->render('view', array(
-            'model'=>$model,
+            'model'=>$player,
+            'count'=>$count,
         ));
     }
-
 }

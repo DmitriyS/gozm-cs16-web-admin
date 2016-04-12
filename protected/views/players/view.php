@@ -42,7 +42,11 @@ if($geo) {
 	'type' => array('condensed', 'bordered'),
 	'htmlOptions' => array('style'=>'text-align: left'),
 	'attributes'=>array(
-        'rank',
+		array(
+			'name' => 'rank',
+			#'type' => 'raw',
+			'value' => $model->rank . " из " . $count,
+		),
         'nick',
         'skill',
 		array(
