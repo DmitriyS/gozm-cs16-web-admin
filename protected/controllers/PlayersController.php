@@ -51,14 +51,14 @@ class PlayersController extends Controller
 			{
 				Yii::app()->end('alert("Ошибка!")');
 			}
-			$js = "$('#bandetail-nick').html('" .  CHtml::encode($model->nick) . "');";
-            $js .= "$('#bandetail-rank').html('" . $model->rank . "');";
-            $js .= "$('#bandetail-skill').html('" . $model->skill . "');";
-			$js .= "$('#bandetail-steam').html('" . $model->steam_id . "');";
-			$js .= "$('#bandetail-datetime').html('" . date('d.m.y - H:i:s',$model->last_seen) . "');";
+			$js = "$('#playerdetail-nick').html('" .  CHtml::encode($model->nick) . "');";
+            $js .= "$('#playerdetail-rank').html('" . $model->rank . "');";
+            $js .= "$('#playerdetail-skill').html('" . $model->skill . "');";
+			$js .= "$('#playerdetail-steam').html('" . $model->steam_id . "');";
+			$js .= "$('#playerdetail-datetime').html('" . date('d.m.y - H:i:s',$model->last_seen) . "');";
 			$js .= "$('#loading').hide();";
-			$js .= "$('#viewban').attr({'href': '".Yii::app()->urlManager->createUrl('/players/view', array('id' => $_POST['id']))."'});";
-			$js .= "$('#BanDetail').modal('show');";
+			$js .= "$('#viewplayer').attr({'href': '".Yii::app()->urlManager->createUrl('/players/view', array('id' => $_POST['id']))."'});";
+			$js .= "$('#PlayerDetail').modal('show');";
 			echo $js;
 		}
 		Yii::app()->end();

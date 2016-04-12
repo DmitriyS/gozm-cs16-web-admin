@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 	$page,
 );
 
-Yii::app()->clientScript->registerScript('banlist', "
+Yii::app()->clientScript->registerScript('playerlist', "
 $('.bantr').live('click', function(){
 	$('#loading').show();
 	var pid = this.id.substr(4);
@@ -64,7 +64,6 @@ $('.search-form form').submit(function(){
         array(
 			'name' => 'rank',
 			'value' => '$data->rank',
-            //'value' => '$this->grid->dataProvider->pagination->offset + $row+1',
 		),
 		array(
 			'name' => 'nick',
@@ -98,7 +97,7 @@ $('.search-form form').submit(function(){
 
 <?php $this->beginWidget('bootstrap.widgets.TbModal',
 	array(
-		'id'=>'BanDetail',
+		'id'=>'PlayerDetail',
 		'htmlOptions'=> array('style'=>' width: 600px; margin-left: -300px'),
 )); ?>
 
@@ -113,42 +112,42 @@ $('.search-form form').submit(function(){
 		<td class="span3">
 			<b>Ник</b>
 		</td>
-		<td class="span6" id="bandetail-nick">
+		<td class="span6" id="playerdetail-nick">
 		</td>
 	</tr>
 	<tr class="odd">
 		<td>
 			<b>Место</b>
 		</td>
-		<td id="bandetail-rank">
+		<td id="playerdetail-rank">
 		</td>
 	</tr>
 	<tr class="odd">
 		<td>
 			<b>Скилл</b>
 		</td>
-		<td id="bandetail-skill">
+		<td id="playerdetail-skill">
 		</td>
 	</tr>
 	<!--tr class="odd">
 		<td>
 			<b>IP адрес</b>
 		</td>
-		<td id="bandetail-ip">
+		<td id="playerdetail-ip">
 		</td>
 	</tr-->
 	<tr class="odd">
 		<td>
 			<b>Стим</b>
 		</td>
-		<td id="bandetail-steam">
+		<td id="playerdetail-steam">
 		</td>
 	</tr>
 	<tr class="odd">
 		<td>
 			<b>Был на сервере</b>
 		</td>
-		<td id="bandetail-datetime">
+		<td id="playerdetail-datetime">
 		</td>
 	</tr>
 	<tr>
@@ -156,7 +155,7 @@ $('.search-form form').submit(function(){
 			<?php $this->widget('bootstrap.widgets.TbButton', array(
 				'label'=>'Показать подробности',
 				'url'=> '#',
-				'htmlOptions'=>array('id' => 'viewban'),
+				'htmlOptions'=>array('id' => 'viewplayer'),
 			)); ?>
 		</td>
 	</tr>
