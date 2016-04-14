@@ -160,9 +160,11 @@ $(".servtr").live("click", function(){
 <?php $this->beginWidget('bootstrap.widgets.TbModal',
 	array(
 		'id'=>'ServerDetail',
+/*
 		'htmlOptions' => array(
 			'style' => 'width: 600px; margin-left: -300px'
 		)
+*/
 )); ?>
 
 <div class="modal-header">

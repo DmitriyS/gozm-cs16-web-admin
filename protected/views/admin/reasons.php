@@ -122,9 +122,11 @@ function clearmodal()
 <?php $this->beginWidget('bootstrap.widgets.TbModal',
 	array(
 		'id'=>'reasons-modal',
+/*
 		'htmlOptions' => array(
 			'style' => 'width: 600px; margin-left: -300px'
 		)
+*/
 )); ?>
 
 <div class="modal-header"></div>

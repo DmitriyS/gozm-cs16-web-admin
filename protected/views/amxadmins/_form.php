@@ -218,9 +218,11 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	$this->beginWidget('bootstrap.widgets.TbModal',
 		array(
 			'id'=>'flagsmodal',
+/*
 			'htmlOptions' => array(
 				'style' => 'width: 600px; margin-left: -300px'
 			)
+*/
 	)); ?>
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal" rel="tooltip" data-placement="left" title="Закрыть">&times;</a>

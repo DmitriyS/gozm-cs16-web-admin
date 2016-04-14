@@ -150,7 +150,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 <?php $this->beginWidget('bootstrap.widgets.TbModal',
 	array(
 		'id'=>'BanDetail',
-		'htmlOptions'=> array('style'=>' width: 600px; margin-left: -300px'),
+//		'htmlOptions'=> array('style'=>' width: 600px; margin-left: -300px'),
 )); ?>
 
 <div class="modal-header">

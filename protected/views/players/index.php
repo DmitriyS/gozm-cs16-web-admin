@@ -98,7 +98,7 @@ $('.search-form form').submit(function(){
 <?php $this->beginWidget('bootstrap.widgets.TbModal',
 	array(
 		'id'=>'PlayerDetail',
-		'htmlOptions'=> array('style'=>' width: 600px; margin-left: -300px'),
+//		'htmlOptions'=> array('style'=>' width: 600px; margin-left: -300px'),
 )); ?>
 
 <div class="modal-header">
