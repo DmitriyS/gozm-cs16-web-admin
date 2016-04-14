@@ -33,11 +33,11 @@ $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 		),
         array(
 			'name' => 'human_wins',
-			'value' => '$data->human_wins',
+			'value' => '$data->human_wins . " (" . round(($data->human_wins / ($data->human_wins + $data->zombie_wins)) * 100, 1) . "%)"',
 		),
         array(
 			'name' => 'zombie_wins',
-			'value' => '$data->zombie_wins',
+			'value' => '$data->zombie_wins . " (" . round(($data->zombie_wins / ($data->zombie_wins + $data->human_wins)) * 100, 1) . "%)"',
 		),
 	),
 )); ?>
