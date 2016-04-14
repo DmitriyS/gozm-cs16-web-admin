@@ -75,13 +75,15 @@ $('.search-form form').submit(function(){
 			'value' => '$data->ip',
 		),
         */
-        array(
-			'name' => 'skill',
-			'value' => '$data->skill',
-		),
+        /*
         array(
 			'name' => 'steam_id',
 			'value' => '$data->steam_id',
+		),
+        */
+        array(
+			'name' => 'skill',
+			'value' => '$data->skill',
 		),
         array(
 			'name' => 'last_seen',
@@ -107,7 +109,7 @@ $('.search-form form').submit(function(){
 </div>
 
 <div class="modal-body" id="ban_name">
-<table class="items table table-bordered table-condensed" style="width:500px; margin: 0 auto">
+<table class="items table table-bordered table-condensed" style="margin: 0 auto">
 	<tr class="odd">
 		<td class="span3">
 			<b>Ник</b>

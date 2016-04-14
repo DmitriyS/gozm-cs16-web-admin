@@ -87,7 +87,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 
 		array(
 			'name' => 'ban_created',
-			'value'=>'date("d.m.Y", $data->ban_created)',
+			'value'=>'date("d.m", $data->ban_created)',
 			'htmlOptions' => array('style' => 'width:70px'),
 		),
 		array(
@@ -159,7 +159,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 </div>
 
 <div class="modal-body" id="ban_name">
-<table class="items table table-bordered table-condensed" style="width:500px; margin: 0 auto">
+<table class="items table table-bordered table-condensed" style="margin: 0 auto">
 	<tr class="odd">
 		<td class="span3">
 			<b>Ник</b>
