@@ -514,8 +514,8 @@ $this->widget('bootstrap.widgets.TbGridView', array(
     <a class="close" data-dismiss="modal">&times;</a>
 	<h3>Информация об IP "<?php echo $model->player_ip ?>"</h3>
 </div>
-<div class="modal-body" style="min-height: 460px">
-	<div id="map" style="width:800px; height:400px; marg: 0 auto"></div>
+<div class="modal-body" style="min-height: 200px">
+	<div id="map" style="min-width:200px; min-height:200px; marg: 0 auto"></div>
 	<div style="top: -30px">
 		<b>Страна: </b>
 		<?php echo $geo['country'] ?>
