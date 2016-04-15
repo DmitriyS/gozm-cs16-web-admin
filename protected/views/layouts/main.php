@@ -135,10 +135,10 @@
 	<div id="copyright">
 		<div class="container">
 			<div class="row">
-				<div id="rights" class="grid-6">
+				<div id="lefts">
 					<b><?php echo CHtml::encode(Yii::app()->name)?></b>
 				</div>
-				<div id="totop" class="grid-6">
+				<div id="rights">
 					<?php echo CHtml::link(
 						'Группа ВКонтакте',
 						'http://vk.com/go_zombie',
