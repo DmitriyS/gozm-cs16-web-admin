@@ -534,7 +534,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 <?php $this->beginWidget('bootstrap.widgets.TbModal',
 	array(
 		'id'=>'modal-map',
-		'htmlOptions'=> array('style'=>' width:860px; margin-left: -430px;height: 600px'),
+//		'htmlOptions'=> array('style'=>' width:860px; margin-left: -430px;height: 600px'),
 )); ?>
 
 <div class="modal-header">
