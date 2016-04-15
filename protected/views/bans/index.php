@@ -117,7 +117,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 			'value' => '$data->ban_length == \'-1\' ? \'Разбанен\' : Prefs::date2word($data->ban_length) . ($data->expired == 1 ? \' (истек)\' : \'\')',
 			'htmlOptions' => array('style' => 'width:130px'),
 		),
-
+/*
 		array(
 			'name' => 'commentsCount',
 			'value'=>'$data->commentsCount',
@@ -143,6 +143,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 			'header' => '',
 			'template'=>'{view}',
 		)
+*/
 	),
 ));
 ?>

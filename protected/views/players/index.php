@@ -89,11 +89,13 @@ $('.search-form form').submit(function(){
 			'name' => 'last_seen',
 			'value' => 'date("d.m.Y", $data->last_seen)',
 		),
+        /*
         array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'header' => '',
 			'template'=>'{view}',
 		),
+        */
 	),
 )); ?>
 
