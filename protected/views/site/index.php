@@ -105,7 +105,9 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 			'template' => '{items} {pager}',
 			'enableSorting' => false,
 			'rowHtmlOptionsExpression'=>'array(
-				"style" => "cursor:pointer;"
+				"style" => "cursor:pointer;",
+				"class" => $data->id == 1 ? "bantr success" : "bantr",
+				"onclick" => "document.location.href=\'".Yii::app()->createUrl("/players/view", array("id" => $data->id))."\'"
 			)',
 			'columns'=>array(
 				array(
