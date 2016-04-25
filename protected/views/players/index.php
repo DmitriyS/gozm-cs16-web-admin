@@ -8,6 +8,7 @@ $this->breadcrumbs=array(
 	$page,
 );
 
+/*
 Yii::app()->clientScript->registerScript('playerlist', "
 $('.bantr').live('click', function(){
 	$('#loading').show();
@@ -17,7 +18,7 @@ $('.bantr').live('click', function(){
 	});
 })
 ");
-
+*/
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -54,7 +55,8 @@ $('.search-form form').submit(function(){
     'rowHtmlOptionsExpression'=>'array(
 		"id" => "ban_$data->id",
 		"style" => "cursor:pointer;",
-		"class" => $data->id == 1 ? "bantr success" : "bantr"
+		"class" => $data->id == 1 ? "bantr success" : "bantr",
+        "onclick" => "document.location.href=\'".Yii::app()->createUrl("/players/view", array("id" => $data->id))."\'"
 	)',
 	'pager' => array(
 		'class'=>'bootstrap.widgets.TbPager',

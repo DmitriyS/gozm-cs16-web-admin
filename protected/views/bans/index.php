@@ -19,6 +19,7 @@ $this->breadcrumbs=array(
 	$page,
 );
 
+/*
 Yii::app()->clientScript->registerScript('banlist', "
 $('.bantr').live('click', function(){
 	$('#loading').show();
@@ -28,6 +29,7 @@ $('.bantr').live('click', function(){
 	});
 })
 ");
+*/
 
 
 Yii::app()->clientScript->registerScript('search', "
@@ -77,7 +79,8 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 	'rowHtmlOptionsExpression'=>'array(
 		"id" => "ban_$data->bid",
 		"style" => "cursor:pointer;",
-		"class" => $data->unbanned == 1 ? "bantr success" : "bantr"
+		"class" => $data->unbanned == 1 ? "bantr success" : "bantr",
+		"onclick" => "document.location.href=\'".Yii::app()->createUrl("/bans/view", array("id" => $data->bid))."\'"
 	)',
 	'pager' => array(
 		'class'=>'bootstrap.widgets.TbPager',
