@@ -47,7 +47,6 @@ if($geo) {
 			#'type' => 'raw',
 			'value' => $model->rank . " из " . $count,
 		),
-        'nick',
         'skill',
 		array(
 			'name' => 'steam_id',
@@ -77,6 +76,20 @@ if($geo) {
 			'name' => 'last_seen',
 			'value' => date('d.m.Y - H:i:s', $model->last_seen),
 		),
+		'damage',
+		'first_zombie',
+		'infect',
+		'zombiekills',
+		'death',
+		'infected',
+		'suicide',
+		'knife_kills',
+		'awp_kills',
+		'grenade_kills',
+		'best_zombie',
+		'best_human',
+		'best_player',
+		'escape_hero',
 	),
 )); ?>
 

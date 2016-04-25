@@ -19,7 +19,7 @@ class Players extends CActiveRecord
 			array('ip', 'match', 'pattern' => '/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/'),
 			array('steam_id', 'match', 'pattern' => '/^(STEAM|VALVE)_([0-9]):([0-9]):\d{1,21}$/'),
 			array('nick', 'length', 'max'=>32),
-			array('id, nick, ip, steam_id, last_seen, first_zombie, infect, zombiekills, humankills, death, infected, suicide, extra, knife_kills, best_zombie, best_human, best_player, escape_hero, rank, skill', 'safe', 'on'=>'search'),
+			array('id, nick, ip, steam_id, last_seen, damage, first_zombie, infect, zombiekills, humankills, death, infected, suicide, extra, knife_kills, awp_kills, grenade_kills, best_zombie, best_human, best_player, escape_hero, rank, skill', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -36,6 +36,7 @@ class Players extends CActiveRecord
 			'ip'			    => 'IP',
 			'steam_id'		    => 'STEAM ID',
 			'last_seen'			=> 'Замечен',
+			'damage'			=> 'Урон',
 			'first_zombie'		=> 'Первый зм',
 			'infect'		    => 'Заражения',
 			'zombiekills'       => 'Убийста зм',
@@ -45,6 +46,8 @@ class Players extends CActiveRecord
 			'suicide'		    => 'Самоубийства',
 			'extra'		        => 'Бонусы',
 			'knife_kills'		=> 'Убийства с ножа',
+			'awp_kills'			=> 'Убийства с AWP',
+			'grenade_kills'		=> 'Убийства гранатой',
 			'best_zombie'		=> 'Лучший зм',
             'best_human'        => 'Лучший человек',
 			'best_player'		=> 'Лучший игрок карты',
