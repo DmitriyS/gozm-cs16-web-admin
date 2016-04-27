@@ -84,7 +84,7 @@ class Webconfig extends CActiveRecord
 			'cookie' => 'Причина бана с сайта',
 			'bans_per_page' => 'Элементов на странице',
 			'design' => 'Шаблон',
-			'banner' => 'Банер',
+			'banner' => 'Баннер',
 			'banner_url' => 'Ссылка баннера',
 			'default_lang' => 'Язык',
 			'start_page' => 'Стартовая страница',

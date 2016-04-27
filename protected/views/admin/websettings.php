@@ -52,6 +52,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		'/amxadmins/index' => 'Админы',
 	));
 	?>
+	<?php echo $form->textFieldRow($model, 'banner'); ?>
 	<legend>Комментарии</legend>
 	<?php echo $form->checkBoxRow($model, 'use_comment'); ?>
 	<?php echo $form->checkBoxRow($model, 'comment_all'); ?>
