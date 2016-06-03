@@ -47,7 +47,9 @@ class SiteController extends Controller
 		$dependecy = new CDbCacheDependency('SELECT MAX(`id`) FROM `bio_players`');
 		$players = new CActiveDataProvider(Players::model()->cache(300, $dependecy), array(
 			'criteria' => array(
+                'select' => '`rank`, `nick`, `skill`',
 				'order' => '`skill` DESC, `id` ASC',
+                'condition' => 'last_seen > ' . (time() - 60*60*24*7),
 				'limit' => 10,
 			),
 			'pagination' => false,

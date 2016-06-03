@@ -23,6 +23,7 @@ class PlayersController extends Controller
             'criteria'=>array(
                 'select' => '`id`, `rank`, `nick`, `skill`, `steam_id`, `last_seen`',
                 'order' => '`skill` DESC, `id` ASC',
+                'condition' => 'last_seen > ' . (time() - 60*60*24*7),
             ),
             'pagination' => array(
                 'pageSize' =>  Yii::app()->config->bans_per_page,
