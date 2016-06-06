@@ -228,6 +228,7 @@ class Amxadmins extends CActiveRecord
 			$this->created = time();
             if($this->password && $this->scenario != 'buy') {
                 //$this->password = md5($this->password);
+                $this->password = hash('sha256', $this->password);
             }
             if($this->flags != 'a' && !$this->password) {
                 $this->flags .= 'e';
@@ -238,6 +239,7 @@ class Amxadmins extends CActiveRecord
         {
 			if ($this->password) {
                 //$this->password = md5($this->password);
+                $this->password = hash('sha256', $this->password);
             } else {
                 $oldadmin = Amxadmins::model()->findByPk($this->id);
                 if ($oldadmin->password && !$removePwd) {
