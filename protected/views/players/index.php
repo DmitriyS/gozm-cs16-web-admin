@@ -63,10 +63,12 @@ $('.search-form form').submit(function(){
 		'displayFirstAndLast' => true,
 	),
 	'columns'=>array(
+        /*
         array(
 			'name' => 'rank',
 			'value' => '$data->rank',
 		),
+        */
 		array(
 			'name' => 'nick',
 			'value' => '$data->nick',

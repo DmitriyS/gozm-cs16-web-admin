@@ -110,10 +110,12 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 				"onclick" => "document.location.href=\'".Yii::app()->createUrl("/players/view", array("id" => $data->id))."\'"
 			)',
 			'columns'=>array(
+                /*
 				array(
 					'name'=>'rank',
 					'value' => '$data->rank',
 				),
+				*/
 				array(
 					'name'=>'nick',
 					'value' => '$data->nick',

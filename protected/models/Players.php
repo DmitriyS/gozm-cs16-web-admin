@@ -86,4 +86,9 @@ class Players extends CActiveRecord
 			)
 		));
 	}
+
+	public static function sql_skill_formula()
+	{
+		return 'ROUND((`infect` + `zombiekills`*2) / (`infected` + `death` + 300) * 1000)';
+	}
 }

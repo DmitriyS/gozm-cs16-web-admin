@@ -21,7 +21,8 @@ class PlayersController extends Controller
     {
         $dataProvider=new CActiveDataProvider('Players', array(
             'criteria'=>array(
-                'select' => '`id`, `rank`, `nick`, `skill`, `steam_id`, `last_seen`',
+                'select' => '`id`, `nick`, `steam_id`, `last_seen`, '.
+                    Players::sql_skill_formula() .' AS `skill`',
                 'order' => '`skill` DESC, `id` ASC',
                 'condition' => 'last_seen > ' . (time() - 60*60*24*7),
             ),
