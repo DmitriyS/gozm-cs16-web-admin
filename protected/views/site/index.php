@@ -120,10 +120,12 @@ $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
 					'name'=>'nick',
 					'value' => '$data->nick',
 				),
+				/*
 				array(
 					'name'=>'skill',
 					'value' => '$data->skill',
 				),
+				*/
 			),
 		));
 		?>

@@ -49,7 +49,7 @@ if($geo) {
 			'value' => $model->rank . " из " . $count,
 		),
 		*/
-        'skill',
+        //'skill',
 		array(
 			'name' => 'steam_id',
 			'type' => 'raw',
