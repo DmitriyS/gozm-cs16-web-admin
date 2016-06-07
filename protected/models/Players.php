@@ -2,6 +2,9 @@
 
 class Players extends CActiveRecord
 {
+	public $rank;
+	public $skill;
+
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

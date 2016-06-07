@@ -63,12 +63,10 @@ $('.search-form form').submit(function(){
 		'displayFirstAndLast' => true,
 	),
 	'columns'=>array(
-        /*
         array(
 			'name' => 'rank',
-			'value' => '$data->rank',
+			'value' => '$this->grid->dataProvider->pagination->offset + $row+1',
 		),
-        */
 		array(
 			'name' => 'nick',
 			'value' => '$data->nick',
@@ -85,12 +83,10 @@ $('.search-form form').submit(function(){
 			'value' => '$data->steam_id',
 		),
         */
-        /*
         array(
 			'name' => 'skill',
 			'value' => '$data->skill',
 		),
-        */
         array(
 			'name' => 'last_seen',
 			'value' => 'date("d.m.Y", $data->last_seen)',

@@ -42,14 +42,15 @@ if($geo) {
 	'type' => array('condensed', 'bordered'),
 	'htmlOptions' => array('style'=>'text-align: left'),
 	'attributes'=>array(
-        /*
 		array(
 			'name' => 'rank',
-			#'type' => 'raw',
+			// 'type' => 'raw',
 			'value' => $model->rank . " из " . $count,
 		),
-		*/
-        //'skill',
+		array(
+			'name' => 'skill',
+			'value' => $model->skill,
+		),
 		array(
 			'name' => 'steam_id',
 			'type' => 'raw',
