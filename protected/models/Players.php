@@ -80,7 +80,8 @@ class Players extends CActiveRecord
         $criteria->compare('rank',$this->rank);
         $criteria->compare('skill',$this->skill);
 
-		$criteria->order = '`skill` DESC, `id` ASC';
+		// $criteria->order = '`skill` DESC, `id` ASC';
+		$criteria->order = Yii::app()->request->getParam('sort');
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

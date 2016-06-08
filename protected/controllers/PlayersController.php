@@ -61,7 +61,8 @@ class PlayersController extends Controller
 			$js .= "$('#playerdetail-steam').html('" . $player->steam_id . "');";
 			$js .= "$('#playerdetail-datetime').html('" . date('d.m.y - H:i:s',$player->last_seen) . "');";
 			$js .= "$('#loading').hide();";
-			$js .= "$('#viewplayer').attr({'href': '".Yii::app()->urlManager->createUrl('/players/view', array('id' => $_POST['id']))."'});";
+			$js .= "$('#viewplayer').attr({'href': '".
+                Yii::app()->urlManager->createUrl('/players/view', array('id' => $_POST['id']))."'});";
 			$js .= "$('#PlayerDetail').modal('show');";
 			echo $js;
 		}
