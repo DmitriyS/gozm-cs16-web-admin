@@ -74,7 +74,7 @@ class PlayersController extends Controller
     {
         $model = Players::model();
         $player = $model->findByPk($id);
-        $count = $model->count();
+        $count = $model->count('last_seen > ' . (time() - 60*60*24*7));
 
         // Вывод всего на вьюху
         $this->render('view', array(
