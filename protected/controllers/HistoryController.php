@@ -63,15 +63,16 @@ class HistoryController extends Controller
                     $geo['lng'] = isset($xml->ip->lng) ? $xml->ip->lng : $geo['lng'];
                 }
             }
-        }
-        if($geo['lat'] == 0 && $geo['lng'] == 0)
-        {
-            if($geo['country'] !== 'Не определена')
+
+            if($geo['lat'] == 0 && $geo['lng'] == 0)
             {
-                $lat_lng = Yii::app()->CountryToLatLng->lookup($geo['country']);
-                $geo['lat'] = $lat_lng['lat'];
-                $geo['lng'] = $lat_lng['lng'];
-                $geo['zoom'] = $lat_lng['zoom'];
+                if($geo['country'] !== 'Не определена')
+                {
+                    $lat_lng = Yii::app()->CountryToLatLng->lookup($geo['country']);
+                    $geo['lat'] = $lat_lng['lat'];
+                    $geo['lng'] = $lat_lng['lng'];
+                    $geo['zoom'] = $lat_lng['zoom'];
+                }
             }
         }
 

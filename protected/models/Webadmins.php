@@ -41,6 +41,7 @@ class Webadmins extends CActiveRecord
 			array('username, password', 'required'),
 			array('username, email','unique'),
 			array('email', 'length', 'max'=>64),
+			array('email', 'email'),
 			array('id, username, password, level, logcode, email, last_action, try', 'safe', 'on'=>'search'),
 		);
 	}
@@ -63,11 +64,11 @@ class Webadmins extends CActiveRecord
 		// Главному админу можно всё
 		if(Webadmins::is_main_admin())
 			return TRUE;
-
+/*
 		// IP видно всем
 		if($access == 'ip_view')
 			return TRUE;
-
+*/
 		if(Yii::app()->user->isGuest || !$access) {
 			return FALSE;
 		}
