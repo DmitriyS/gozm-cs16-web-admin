@@ -16,7 +16,7 @@ class KCaptchaValidator extends CValidator {
 		}
 	}
 
-	public function testCode($code) {
+	public static function testCode($code) {
 
 		Yii::app()->session->open();
 
