@@ -92,6 +92,7 @@ Yii::app()->clientScript->registerScript('adminactions', '
 
 if(!$model->isNewRecord) {
     $model->flags = $model->flags{0};
+    $model->password = '';
 }
 
 $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
@@ -229,11 +230,14 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 		<h4>Выбор флагов доступа</h4>
 	</div>
 	<div class="modal-body">
-		<label class="checkbox">
+		<!--label class="checkbox">
 			<input type="checkbox" id="checkAllFlags"> Выбрать все (кроме z)
-		</label>
-		<?php
+		</label-->
+		<!--?php
 			echo $form->checkboxListRow($model, 'accessflags', Amxadmins::getFlags(), array('class' => 'adminflag'));
+		?-->
+		<?php
+			echo $form->radioButtonListRow($model, 'accessflags', Amxadmins::getFlags(), array('class' => 'adminflag'));
 		?>
 	</div>
 	<div class="modal-footer">

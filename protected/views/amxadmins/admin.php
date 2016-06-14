@@ -43,7 +43,7 @@ $this->menu=array(
 	)',
 	'columns'=>array(
 		'nickname',
-		'password',
+		// 'password',
 		'access',
 		'username',
 		array(

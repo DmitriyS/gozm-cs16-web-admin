@@ -32,6 +32,7 @@ $this->menu=array(
 	'attributes'=>array(
 		'nickname',
 		'username',
+		'password',
 		array(
 			'name' => 'flags',
 			'value' => Amxadmins::getAuthType($model->flags)
