@@ -120,6 +120,7 @@ class Usermenu extends CActiveRecord
 			'_SEARCH' => 'Поиск',
 			'_LOGIN' => 'Войти',
 			'_LOGOUT' => 'Выйти',
+			'_DONATE' => 'Донаты',
 		);
 
 		foreach ($model as $m)
