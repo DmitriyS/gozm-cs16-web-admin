@@ -15,10 +15,10 @@ $this->breadcrumbs=array(
 
 <div>
     <ul>
-        <li><img src="http://mini.webmoney.ru/img/p/WMR.png" alt="" class="" style="margin: 1px"> R183396893641 </li>
-        <li><img src="http://mini.webmoney.ru/img/p/WMU.png" alt="" class="" style="margin: 1px"> U706563448909 </li>
-        <li><img src="http://mini.webmoney.ru/img/p/WMB.png" alt="" class="" style="margin: 1px"> B217151713173 </li>
-        <li><img src="http://mini.webmoney.ru/img/p/WME.png" alt="" class="" style="margin: 1px"> E200492161219 </li>
-        <li><img src="http://mini.webmoney.ru/img/p/WMZ.png" alt="" class="" style="margin: 1px"> Z337163943323 </li>
+        <li><img src="http://mini.webmoney.ru/img/p/WMR.png" alt="" class="wm"> R183396893641 </li>
+        <li><img src="http://mini.webmoney.ru/img/p/WMU.png" alt="" class="wm"> U706563448909 </li>
+        <li><img src="http://mini.webmoney.ru/img/p/WMB.png" alt="" class="wm"> B217151713173 </li>
+        <li><img src="http://mini.webmoney.ru/img/p/WME.png" alt="" class="wm"> E200492161219 </li>
+        <li><img src="http://mini.webmoney.ru/img/p/WMZ.png" alt="" class="wm"> Z337163943323 </li>
     </ul>
 </div>

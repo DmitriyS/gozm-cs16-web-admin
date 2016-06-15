@@ -12,7 +12,7 @@
  * @license http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru  «Attribution-NonCommercial-ShareAlike»
  */
 
-$page = 'Випы и Админы';
+$page = 'Аккаунты';
 
 $this->pageTitle = Yii::app()->name . ' - ' . $page;
 
