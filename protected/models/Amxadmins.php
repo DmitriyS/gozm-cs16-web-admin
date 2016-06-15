@@ -313,15 +313,15 @@ class Amxadmins extends CActiveRecord
     {
         if ($flags == Amxadmins::FLAG_VIP)
         {
-            return 'вип';
+            return 'ВИП';
         }
         elseif ($flags == Amxadmins::FLAG_PLAYER)
         {
-            return 'игрок';
+            return 'ИГРОК';
         }
         else
         {
-            return 'админ';
+            return 'АДМИН';
         }
     }
 

@@ -376,7 +376,7 @@ class AmxadminsController extends Controller
 		$admins=new CActiveDataProvider(Amxadmins::model()->cache(300, $dependecy), array(
 			'criteria'=>array(
 				// Выводим только тех, кого разрешено ваыводить
-				'condition' => '`ashow`=1',
+				'condition' => '`ashow`=1 AND `is_active`=1',
 				'order' => '`access` ASC, `id` ASC',
 			),
 			'pagination' => array(
