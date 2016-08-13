@@ -16,7 +16,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 
 	<?php echo $form->textFieldRow($model, 'steam_id', array('maxlength'=>20)); ?>
 
-    <?php echo $form->textFieldRow($model, 'ip', array('maxlength'=>15)); ?>
+    <?php if (Webadmins::checkAccess('ip_view')) echo $form->textFieldRow($model, 'ip', array('maxlength'=>15)); ?>
 
 	<label for="Players_last_seen" class="required">Последний онлайн</label>
 	<?php 
