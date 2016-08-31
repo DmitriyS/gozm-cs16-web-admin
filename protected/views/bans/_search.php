@@ -29,7 +29,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 
 	<?php echo $form->textFieldRow($model,'player_id',array('maxlength'=>20)); ?>
 
-    <?php echo $form->textFieldRow($model,'player_ip',array('maxlength'=>15)); ?>
+    <?php if (Webadmins::checkAccess('ip_view')) echo $form->textFieldRow($model,'player_ip',array('maxlength'=>15)); ?>
 
 	<?php echo $form->textFieldRow($model,'ban_reason',array('maxlength'=>100)); ?>
 
