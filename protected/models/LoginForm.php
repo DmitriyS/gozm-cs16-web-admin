@@ -44,7 +44,10 @@ class LoginForm extends CFormModel
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate())
+			{
+				Syslog::add(Logs::LOG_LOGIN, $this->username . ' не смог авторизоваться');
 				$this->addError('password','Неверные имя пользователя, пароль или проверочный код.');
+			}
 		}
 	}
 
@@ -58,10 +61,13 @@ class LoginForm extends CFormModel
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
 			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 дней
-			Yii::app()->user->login($this->_identity,$duration);
+			Yii::app()->user->login($this->_identity, $duration);
+			Syslog::add(Logs::LOG_LOGIN, $this->username . ' успешно авторизовался');
 			return true;
 		}
 		else
+		{
 			return false;
+		}
 	}
 }

@@ -26,6 +26,7 @@ class Logs extends CActiveRecord
 	const LOG_DELETED = 'deleted';
 	const LOG_PURCHASE = 'purchase';
 	const LOG_INSTALL = 'Install';
+	const LOG_LOGIN = 'login';
 
 	public static function model($className=__CLASS__)
 	{
@@ -39,6 +40,7 @@ class Logs extends CActiveRecord
 			self::LOG_EDITED => 'Редактирование',
 			self::LOG_DELETED => 'Удаление',
 			self::LOG_INSTALL => 'Установка',
+			self::LOG_LOGIN => 'Авторизация',
 		);
 		if($all)
 			return $types;
