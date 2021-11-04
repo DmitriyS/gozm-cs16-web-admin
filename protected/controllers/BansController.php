@@ -98,15 +98,15 @@ class BansController extends Controller
                 'lng' => 0,
                 'zoom' => 10,
             );
-			$get = @file_get_contents('http://ipgeobase.ru:7020/geo?ip=' . $model->player_ip);
+			$get = @file_get_contents('http://ru.sxgeo.city/xml/' . $model->player_ip);
             if($get) {
                 $xml = @simplexml_load_string($get);
                 if(!empty($xml->ip)) {
-                    $geo['city'] = isset($xml->ip->city) ? $xml->ip->city : $geo['city'];
-                    $geo['region'] = isset($xml->ip->region) ? $xml->ip->region : $geo['region'];
-                    $geo['country'] = isset($xml->ip->country) ? $xml->ip->country : $geo['country'];
-                    $geo['lat'] = isset($xml->ip->lat) ? $xml->ip->lat : $geo['lat'];
-                    $geo['lng'] = isset($xml->ip->lng) ? $xml->ip->lng : $geo['lng'];
+                    $geo['city'] = isset($xml->ip->city->name_ru) ? $xml->ip->city->name_ru : $geo['city'];
+                    $geo['region'] = isset($xml->ip->region->name_ru) ? $xml->ip->region->name_ru : $geo['region'];
+                    $geo['country'] = isset($xml->ip->country->name_ru) ? $xml->ip->country->name_ru : $geo['country'];
+                    $geo['lat'] = isset($xml->ip->city->lat) ? $xml->ip->city->lat : $geo['lat'];
+                    $geo['lng'] = isset($xml->ip->city->lon) ? $xml->ip->city->lon : $geo['lng'];
                 }
             }
 
